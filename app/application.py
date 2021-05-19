@@ -1208,7 +1208,43 @@ def marksCriteria():
 @app.route('/tablesSSP',methods=['GET',"POST"])
 @login_required(role = "SSP")
 def tablesSSP():
-    return render_template('tablesSSP.html',form=table())
+    d = datetime.datetime.today()
+    # d = d + relativedelta(months=-1)
+    d = d.strftime('%Y-%m')
+    psLabels = ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']
+    values_all = []
+    for x in psLabels:
+        mycursor.execute("SELECT * from marks where ps_name='{0}' and to_char(date,'YYYY-MM')='{1}'".format(x, d))
+        data = mycursor.fetchall()
+        if data:
+            values_all.extend(data)
+        else:
+            values_all.append((0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+
+    final_score = []
+    final_mapping = []
+    result = 0
+    for j in range(len(values_all)):
+        print(j, '  j')
+        result = (values_all[j][2] * 0.1) + (values_all[j][3] * 2) + (values_all[j][4] * 0.1) + (
+                values_all[j][5] * 0.4) + (values_all[j][6] * 2) + (values_all[j][7] * 1) + (
+                         values_all[j][8] * 0.2) + (values_all[j][9] * 0.2) + (values_all[j][10] * 0.1) + (
+                         values_all[j][11] * 0.1) + (values_all[j][12] * 2) + (values_all[j][13] * 0.4) + (
+                     values_all[j][14]) + (values_all[j][15]) + (values_all[j][16])
+        temp1 = values_all[j][1]
+        tuple = (temp1, round(result, 2))
+        combo = list(tuple)
+        final_mapping.append(combo)
+
+    final_mapping.sort(key=lambda x: x[1], reverse=True)
+    for j in range(len(final_mapping)):
+        final_mapping[j].append(j + 1)
+    print(final_mapping)
+
+    psLabels1 = [x[0] for x in final_mapping]
+    psMarks = [x[1] for x in final_mapping]
+    return render_template('tablesSSP.html',form=table(),psLabels1=psLabels1,psMarks=psMarks,values=final_mapping)
+
 
 @app.route('/tables',methods=['GET',"POST"])
 @login_required(role = "SSP")
@@ -1826,6 +1862,41 @@ def test1():
 @login_required(role = "SSP")
 def marksform():
     iform = marksForm()
+    d = datetime.datetime.today()
+    # d = d + relativedelta(months=-1)
+    d = d.strftime('%Y-%m')
+    psLabels = ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']
+    values_all = []
+    for x in psLabels:
+        mycursor.execute("SELECT * from marks where ps_name='{0}' and to_char(date,'YYYY-MM')='{1}'".format(x, d))
+        data = mycursor.fetchall()
+        if data:
+            values_all.extend(data)
+        else:
+            values_all.append((0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+
+    final_score = []
+    final_mapping = []
+    result = 0
+    for j in range(len(values_all)):
+        print(j, '  j')
+        result = (values_all[j][2] * 0.1) + (values_all[j][3] * 2) + (values_all[j][4] * 0.1) + (
+                values_all[j][5] * 0.4) + (values_all[j][6] * 2) + (values_all[j][7] * 1) + (
+                         values_all[j][8] * 0.2) + (values_all[j][9] * 0.2) + (values_all[j][10] * 0.1) + (
+                         values_all[j][11] * 0.1) + (values_all[j][12] * 2) + (values_all[j][13] * 0.4) + (
+                     values_all[j][14]) + (values_all[j][15]) + (values_all[j][16])
+        temp1 = values_all[j][1]
+        tuple = (temp1, round(result, 2))
+        combo = list(tuple)
+        final_mapping.append(combo)
+
+    final_mapping.sort(key=lambda x: x[1], reverse=True)
+    for j in range(len(final_mapping)):
+        final_mapping[j].append(j + 1)
+    print(final_mapping)
+
+    psLabels1 = [x[0] for x in final_mapping]
+    psMarks = [x[1] for x in final_mapping]
 
     if iform.validate_on_submit():
         date =  iform.date.data
@@ -1898,7 +1969,7 @@ def marksform():
             db.session.commit()
             flash("Data uploaded Successfully", category='success')
             return redirect(url_for('marksform'))
-    return render_template('marksform.html',form=iform)
+    return render_template('marksform.html',form=iform,psLabels1=psLabels1,psMarks=psMarks,values=final_mapping)
 
 @app.route("/logout")
 @login_required(role = "ANY")
