@@ -1195,7 +1195,16 @@ def SSPuploading():
 
 
             return "uploaded"
-    return render_template("uploadingSSP.html", form=eform)
+    psLabels = ["ps1",'ps2','ps3','ps4','ps5','ps6','ps7','ps8','ps9','ps10']
+    recent_update = []
+    for x in psLabels:
+        mycursor.execute("SELECT * from credentials where username='{0}' ".format(x))
+        data = mycursor.fetchall()
+        maximum = max(data[0][4], data[0][5], data[0][6])
+
+        lst = [x, maximum.strftime('%d-%m-%y')]
+        recent_update.append(lst)
+    return render_template("uploadingSSP.html", form=eform,lst = recent_update)
 
 
 @app.route("/marksCriteria",methods=['GET',"POST"])
