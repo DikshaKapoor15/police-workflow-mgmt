@@ -78,7 +78,7 @@ def login():
             if user_object.urole == 'POLICE_STATION':
                 return redirect(url_for('home', userdata = user_object.username))
             if user_object.urole == 'SSP':
-                return redirect(url_for('marks'))
+                return redirect(url_for('mark'))
         return render_template("login.html", form=login_form)
     else:
         flash("You are already logged in. Please logout to access login page")
