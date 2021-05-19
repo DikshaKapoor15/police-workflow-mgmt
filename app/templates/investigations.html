@@ -1,0 +1,595 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--	<title>Contact V4</title>-->
+<!--	<meta charset="UTF-8">-->
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+
+<!--&lt;!&ndash;===============================================================================================&ndash;&gt;-->
+<!--	<link rel="stylesheet" type="text/css" href="{{url_for('static' ,  filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">-->
+<!--&lt;!&ndash;===============================================================================================&ndash;&gt;-->
+<!--	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='styles/util.css')}}">-->
+<!--	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename='styles/main.css')}}">-->
+<!--	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">-->
+<!--	<link rel="stylesheet" href="{{url_for('static',filename = 'styles/home-page.css')}}">-->
+<!--	&lt;!&ndash;===============================================================================================&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+
+<!--	 &lt;!&ndash; ***** Header Area Start ***** &ndash;&gt;-->
+<!--    <header class="header-area header-sticky">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <nav class="main-nav">-->
+<!--                        &lt;!&ndash; ***** Logo Start ***** &ndash;&gt;-->
+<!--                        <a href="index.html" class="logo">Police<em> Station XYZ</em></a>-->
+<!--                        &lt;!&ndash; ***** Logo End ***** &ndash;&gt;-->
+<!--                        &lt;!&ndash; ***** Menu Start ***** &ndash;&gt;-->
+<!--                        <ul class="nav">-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('home')}}" class="active">Home</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('challan')}}">Challan</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('investigations')}}">Investigation</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('recovery')}}">Recovery</a></li>-->
+<!--                            &lt;!&ndash; <li class="scroll-to-section"><a href="">Logout</a></li>  &ndash;&gt;-->
+<!--                            <li class="main-button"><a href="{{url_for('logout')}}">Logout</a></li>-->
+<!--                        </ul>-->
+<!--                        <a class='menu-trigger'>-->
+<!--                            <span>Menu</span>-->
+<!--                        </a> &ndash;&gt;-->
+<!--                        &lt;!&ndash; ***** Menu End ***** &ndash;&gt;-->
+<!--                    </nav>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--	<div class="container-contact100">-->
+<!--		<div class="wrap-contact100">-->
+<!--			<form class="contact100-form validate-form" action="#" method="post">-->
+<!--				<span class="contact100-form-title">-->
+<!--					Investigation Form-->
+<!--				</span>-->
+
+<!--				&lt;!&ndash;<div class="wrap-input100 validate-input" data-validate="Name is required">-->
+<!--					<span class="label-input100">Name of Police Station</span>-->
+<!--					<input class="input100" type="text" name="name" placeholder="Enter The name of Police Station">-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div> &ndash;&gt;-->
+
+<!--				&lt;!&ndash; <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">-->
+<!--					<span class="label-input100">Email</span>-->
+<!--					<input class="input100" type="text" name="email" placeholder="Enter your email addess">-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div> &ndash;&gt;-->
+
+<!--				&lt;!&ndash; <div class="wrap-input100 validate-input" data-validate="Name is required">-->
+<!--					<span class="label-input100">Name of The Police Station & I/C traffic</span>-->
+<!--					<input class="input100" type="text" name="name" placeholder="Enter The name of Police Station">-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div> &ndash;&gt;-->
+<!--				{{form.csrf_token}}-->
+<!--				<div class="wrap-input100 validate-input">-->
+<!--					<span class="label-input100">Category</span>-->
+<!--					{{form.category(placeholder = 'Category', class = 'input100')}}-->
+<!--					&lt;!&ndash;<input class="input100" type="number" min=0 name="overTT" placeholder="Enter a number">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input">-->
+<!--					<span class="label-input100"># untraced pending cases</span>-->
+<!--					{{form.pending_ut(placeholder = 'Enter number of untraced pending cases', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="Drunken" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input">-->
+<!--					<span class="label-input100"># untraced disposed cases</span>-->
+<!--					<br>{{form.dispose_ut(placeholder = 'Enter number of untraced disposed cases', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="overspeed" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># pending cases from less than 3 months</span>-->
+<!--					<br>{{form.pending_lt3_ui(placeholder = 'Enter number of pending cases from less than 3 months', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="helSeat" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># disposal cases from less than 3 months </span>-->
+<!--					<br>{{form.dispose_lt3_ui(placeholder = 'Enter number of disposal cases from less than 3 months', class = 'input100', type = 'number')}}-->
+
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="MaskCov" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># pending cases over 3 months</span>-->
+<!--					<br>{{form.pending_3_ui(placeholder = 'Enter number of pending cases over 3 months', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="helSeat" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># disposal cases over 3 months</span>-->
+<!--					<br>{{form.dispose_3_ui(placeholder = 'Enter number of disposal cases over 3 months', class = 'input100', type = 'number')}}-->
+
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="MaskCov" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># pending cases over 6 months</span>-->
+<!--					<br>{{form.pending_6_ui(placeholder = 'Enter number of pending cases over 6 months', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="helSeat" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># disposal cases over 6 months</span>-->
+<!--					<br>{{form.dispose_6_ui(placeholder = 'Enter number of disposal cases over 6 months', class = 'input100', type = 'number')}}-->
+
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="MaskCov" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># pending cases over 12 months</span>-->
+<!--					<br>{{form.pending_12_ui(placeholder = 'Enter number of pending cases over 12 months', class = 'input100', type = 'number')}}-->
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="helSeat" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+<!--				<div class="wrap-input100 validate-input" >-->
+<!--					<span class="label-input100"># disposal cases over 12 months</span>-->
+<!--					<br>{{form.dispose_12_ui(placeholder = 'Enter number of disposal cases over 12 months', class = 'input100', type = 'number')}}-->
+
+<!--&lt;!&ndash;					<input class="input100" type="number" min=0 name="MaskCov" placeholder="Enter number of cases">&ndash;&gt;-->
+<!--					<span class="focus-input100"></span>-->
+<!--				</div>-->
+
+
+<!--				<div class="container-contact100-form-btn">-->
+<!--					<div class="wrap-contact100-form-btn">-->
+<!--						<div class="contact100-form-bgbtn"></div>-->
+<!--						<button class="contact100-form-btn">-->
+<!--							<span>-->
+<!--								Submit-->
+<!--								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>-->
+<!--							</span>-->
+
+<!--						</button>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</form>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Glance Design Dashboard an Admin Panel Category Flat Bootstrap Responsive Website Template | Forms :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<link href="{{url_for('static' , filename='styles/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="{{url_for('static' , filename='styles/style.css')}}" rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href="{{url_for('static' , filename='styles/font-awesome.css')}}" rel="stylesheet">
+<!-- //font-awesome icons CSS -->
+
+ <!-- side nav css file -->
+ <link href="{{url_for('static' , filename='styles/SidebarNav.min.css')}}" media='all' rel='stylesheet' type='text/css'/>
+ <!-- side nav css file -->
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+             $(function() { // this function is to minimum date that can be selected to create an event
+              $(document).ready(function () {
+                  var date = new Date().toISOString().slice(0,7); // extract date from date and time output
+                   $('#date').attr('max', date);
+              });
+           });
+</script>
+
+
+ <!-- js-->
+<script src="{{url_for('static' , filename='javascript/jquery-1.11.1.min.js')}}"></script>
+<script src="{{url_for('static' , filename='javascript/modernizr.custom.js')}}"></script>
+
+<!--webfonts-->
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+
+<!-- Metis Menu -->
+<script src="{{url_for('static' , filename='javascript/metisMenu.min.js')}}"></script>
+<script src="{{url_for('static' , filename='javascript/custom.js')}}"></script>
+<link href="{{url_for('static' , filename='styles/custom.css')}}" rel="stylesheet">
+<!--//Metis Menu -->
+
+<!-- additional Styling -->
+<style>
+    @media (min-width: 768px)
+    {
+
+    .form-horizontal .control-label {
+        padding-top: 7px;
+        padding-left: 50px;
+        padding-left: 70px;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    }
+
+    .form-control1, .form-control_2.input-sm {
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    color: #616161;
+    margin-left: 40px;
+    background: #fff;
+    box-shadow: none !important;
+    width: 60%;
+    font-size: 0.85em;
+    font-weight: 300;
+    height: 40px;
+    border-radius: 0;
+    -webkit-appearance: none;
+    resize: none;
+    border-radius: 4px;
+    border-radius: 5px;
+}
+.forms label {
+    font-weight: 400;
+    font-size: large;
+}
+@media (min-width: 768px)
+{
+.col-sm-2 {
+   width: 30%;
+}
+}
+.form-group {
+    margin-bottom: 35px;
+}
+
+.logo {
+  line-height: 80px;
+  color:rgb(17, 17, 17);
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: left; */
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-left: 100px;
+  background:white;
+}
+.logo em {
+  font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+}
+
+span.dashboard_text {
+    font-size: 15px;
+    text-transform: capitalize;
+    display: block;
+    letter-spacing: 1px;
+    padding-left: 35px;
+	color: white;
+	margin-left: 30px;
+}
+.navbar-header.h1 {
+
+
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+span.dashboard_head
+{   font-size: 20px;
+	color: white;
+	text-align:center;
+	margin-left: 35px;
+}
+.forms button.btn.btn-default {
+    background-color: #F2B33F;
+    color: #fff;
+    padding: .5em 1.5em;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    border-radius: 5px;
+    width: 30%;
+}
+@media (min-width: 768px)
+{
+.col-sm-offset-2 {
+    margin-left: 25%;
+    margin-top: 5%;
+}
+}
+
+</style>
+
+</head>
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <h1>  <img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;">
+            <span class="dashboard_head" >Punjab </span>  <span class="dashboard_text">Police dashboard</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+              <li class="header">MAIN NAVIGATION</li>
+              <li class="treeview">
+                <a href="{{url_for('home')}}">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-edit"></i> <span>Forms</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{url_for('challan')}}"><i class="fa fa-angle-right"></i> Challan Form</a></li>
+				  <li><a href="{{url_for('recovery')}}"><i class="fa fa-angle-right"></i> Recovery Form</a></li>
+				  <li><a href="{{url_for('investigations')}}"><i class="fa fa-angle-right"></i> Investigation Form</a></li>
+
+                </ul>
+              </li>
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-table"></i> <span>Upload Data</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{url_for('uploading')}}"><i class="fa fa-angle-right"></i> Excel </a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+
+                <a href="" class="logo">Police Station<em>  Portal</em></a>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right">
+
+				<div class="profile_details">
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" aria-expanded="false">
+								<div class="profile_img">
+									<!-- <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>  -->
+									<div class="user-name">
+										<a href="{{url_for('logout')}}" style="font-size: 20px;"><i class="fa fa-sign-out"></i> Logout</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+									</div>
+									<!-- <i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i> -->
+									<div class="clearfix"></div>
+								</div>
+							</a>
+							<!-- <ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul> -->
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="container mt-3">
+						{% with messages = get_flashed_messages(with_categories=true) %}
+						  {% if messages %}
+					     <ul class=flashes>
+										{% for  category,message in messages %}
+							 			{% if category== 'warning' %}
+									   <div class="alert alert-warning" role="alert">
+									 		 {{ message }}
+									   </div>
+							            {% endif %}
+							           {% if category== 'success' %}
+									   <div class="alert alert-success" role="alert">
+									 		 {{ message }}
+									   </div>
+							            {% endif %}
+							            {% if category== 'danger' %}
+									   <div class="alert alert-danger" role="alert">
+									 		 {{ message }}
+									   </div>
+							            {% endif %}
+							{% endfor %}
+						  </ul>
+						  {% endif %}
+						{% endwith %}
+					</div>
+
+
+
+
+					<div class="row">
+						<h3 class="title1">Investigation Form :</h3>
+						<div class="form-three widget-shadow">
+							<form class="form-horizontal" action="#" method="post">
+								{{form.csrf_token}}
+								<div class="form-group">
+									<label for="focusedinput1" class="col-sm-2 control-label">Category</label>
+									<div class="col-sm-8">
+										{{form.category(placeholder = 'Category', class="form-control1")}}
+									</div>
+									<!-- <div class="col-sm-2">
+										<p class="help-block">Your help text!</p>
+									</div> -->
+								</div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># untraced pending cases</label>
+									<div class="col-sm-8">
+										{{form.pending_ut(placeholder = 'Enter number of untraced pending cases', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># untraced disposed cases</label>
+									<div class="col-sm-8">
+										{{form.dispose_ut(placeholder = 'Enter number of untraced disposed cases', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># pending cases from less than 3 months</label>
+									<div class="col-sm-8">
+										{{form.pending_lt3_ui(placeholder = 'Enter number of pending cases from less than 3 months', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># disposed cases from less than 3 months</label>
+									<div class="col-sm-8">
+										{{form.dispose_lt3_ui(placeholder = 'Enter number of disposal cases from less than 3 months', class = 'form-control1', type = 'number')}}
+
+									</div>
+                                </div>
+
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># pending cases over 3 months</label>
+									<div class="col-sm-8">
+										{{form.pending_3_ui(placeholder = 'Enter number of pending cases over 3 months', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># disposed cases over 3 months</label>
+									<div class="col-sm-8">
+										{{form.dispose_3_ui(placeholder = 'Enter number of disposal cases over 3 months', class = 'form-control1', type = 'number')}}
+
+									</div>
+                                </div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># pending cases over 6 months</label>
+									<div class="col-sm-8">
+										{{form.pending_6_ui(placeholder = 'Enter number of pending cases over 6 months', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># disposed cases over 6 months</label>
+									<div class="col-sm-8">
+										{{form.dispose_6_ui(placeholder = 'Enter number of disposal cases over 6 months', class = 'form-control1', type = 'number')}}
+
+									</div>
+                                </div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># pending cases over 12 months</label>
+									<div class="col-sm-8">
+										{{form.pending_12_ui(placeholder = 'Enter number of pending cases over 12 months', class = 'form-control1', type = 'number')}}
+									</div>
+                                </div>
+                                <div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label"># disposed cases over 12 months</label>
+									<div class="col-sm-8">
+										{{form.dispose_12_ui(placeholder = 'Enter number of disposal cases over 12 months', class = 'form-control1', type = 'number')}}
+
+									</div>
+                                </div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Date</label>
+									<div class="col-sm-8">
+										{{ form.hidden_tag() }}
+										{{form.date(placeholder = 'date',type = 'month')}}
+									</div>
+                                </div>
+								<div class="form-group">
+									<div class="col-sm-offset-2"> <button type="submit" class="btn btn-default">Submit</button> </div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- side nav js -->
+	<script src="{{url_for('static' , filename='javascript/SidebarNav.min.js')}}" type='text/javascript'></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
+
+	<!-- Classie --><!-- for toggle left push menu script -->
+		<script src="{{url_for('static' , filename='javascript/classie.js')}}"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+	<!--scrolling js-->
+	<script src="{{url_for('static' , filename='javascript/jquery.nicescroll.js')}}"></script>
+	<script src="{{url_for('static' , filename='javascript/scripts.js')}}"></script>
+	<!--//scrolling js-->
+
+	<!-- Bootstrap Core JavaScript -->
+   <script src="{{url_for('static' , filename='javascript/bootstrap.js')}}"> </script>
+
+</body>
+</html>
+
+
+

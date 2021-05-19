@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>op</title>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+<body>
+           <canvas id="myChart" width="700" height="700"></canvas>
+    <script>
+          Chart.defaults.global.responsive = false;
+          var ctx=document.getElementById("myChart").getContext("2d");
+
+          window.newbar =new Chart( ctx, {
+            type: 'bubble',
+            data : {
+
+                datasets : [{
+                    label : 'ps1',
+                    data: [{
+                    x: {{ values1[0] }},
+                    y: {{ values2[0] }},
+                    r: {{ values3[0] }}
+                    }],
+                    backgroundColor : 'green',
+                },
+                {
+                    label : '',
+                    data: [{
+                    x: {{ values1[1] }},
+                    y: {{ values2[1] }},
+                    r: {{ values3[1] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[2] }},
+                    y: {{ values2[2] }},
+                    r: {{ values3[2] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[3] }},
+                    y: {{ values2[3] }},
+                    r: {{ values3[3] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[4] }},
+                    y: {{ values2[4] }},
+                    r: {{ values3[4] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[5] }},
+                    y: {{ values2[5] }},
+                    r: {{ values3[5] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[6] }},
+                    y: {{ values2[6] }},
+                    r: {{ values3[6] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[7] }},
+                    y: {{ values2[7] }},
+                    r: {{ values3[7] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[8] }},
+                    y: {{ values2[8] }},
+                    r: {{ values3[8] }}
+                    }],
+                    backgroundColor : 'green',
+                },{
+                    label : '',
+                    data: [{
+                    x: {{ values1[9] }},
+                    y: {{ values2[9] }},
+                    r: {{ values3[9] }}
+                    }],
+                    backgroundColor : 'green',
+                }]
+            }
+          });
+
+
+
+
+     </script>
+
+</body>
+</html>

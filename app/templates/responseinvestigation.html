@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+</head>
+<body>
+            <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+
+     <div class="charts">
+    <div class="col-md-6 charts-grids w3ls-high" style="width: 100%;">
+    <h4 class="title">INVESTIGATION UNDER {{session.type}}</h4>
+        <div id="chartdivtop1"></div>
+    <canvas id = "graph" style="background-color: rgb(255, 255, 255); "></canvas>
+    <script>
+                    Chart.defaults.global.responsive = true;
+
+        var can = $('#graph').get(0).getContext('2d');
+      var config =   {
+            type: 'horizontalBar',
+
+            data : {
+               labels : {{labels1|tojson}},
+               datasets : [
+                {
+                   data  :  {{values1|safe}} ,
+                   backgroundColor:'rgba(70, 246, 108, 1)',
+                  label: {{x|tojson}}
+                },
+                {
+                   data  : {{values2|safe}} ,
+                   backgroundColor: "rgba(94, 247, 224, 1)",
+                  label:  {{y|tojson}}
+                }
+               ]
+            },
+             options : {
+                              title: {
+                                        display: true,
+                                        text: 'Number of cases in ' + {{w|tojson}}
+
+                                        },
+                              responsive :true,
+                              aspectRatio:4,
+                               scales: {
+                                yAxes: [{
+                                    barPercentage : 0.75,
+                                    ticks: {
+                                        autoSkip: false,
+                                        maxRotation: 0,
+                                        minRotation: 0
+                                    }
+                                }],
+                                xAxes: [{
+                                    display: true,
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepValue: 5,
+                                        max: 100
+                                    }
+                                }]
+                            }
+                       }
+          };
+
+             var bar = new Chart(can,config);
+
+    </script>
+         </div>
+          <div class="clearfix"></div>
+     </div>
+     <div style="margin-top: 10px;"></div>
+        <div class="charts " >
+                    	<div class="col-md-6 charts-grids w3ls-high" style="width: 100%;">
+					<h4 class="title">INVESTIGATION UNDER {{session.type}}</h4>
+					<div id="chartdiv"></div>
+
+    <canvas id = "graph1" style="background-color: rgb(255, 255, 255); "></canvas>
+    <script>
+                    Chart.defaults.global.responsive = true;
+
+               var can1 = $('#graph1').get(0).getContext('2d');
+              var config1 = {
+                        type: 'bar',
+
+                        data : {
+                           labels : {{labels|tojson}},
+                           datasets : [
+                            {
+                                label : {{x|tojson}},
+                               data  : {{values3}},
+                                backgroundColor : 'rgba(70, 246, 108, 1)'
+                            },
+                            {
+                                label : {{y|tojson}},
+                               data  : {{values4}},
+                                  backgroundColor : "rgba(94, 247, 224, 1)"
+                            }
+                           ]
+                        },
+
+                         options: {
+                          title: {
+                                        display: true,
+                                        text: 'Number of cases in ' + {{w|tojson}}
+
+                                        },
+                         responsive: true,
+                         aspectRatio:4,
+                    scales: {
+                        xAxes: [{
+                             barPercentage : 0.5
+                        }]
+                    }
+                }
+                      };
+
+             var bar = new Chart(can1,config1);
+    </script>
+                    </div>
+    </div>
+
+
+
+</body>
+</html>

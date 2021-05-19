@@ -1,0 +1,1544 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--  <head>-->
+
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <meta name="description" content="">-->
+<!--    <meta name="author" content="">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">-->
+
+<!--    <title>Home Page</title>-->
+
+
+<!--    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/home-page.css')}}">-->
+<!--    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/sspcomp.css')}}">-->
+<!--     <link rel="stylesheet" href="{{url_for('static', filename = 'styles/marks.css')}}">-->
+<!--     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>-->
+<!--      <style>-->
+<!--          .column_left{-->
+<!--position:absolute;-->
+<!--visibility: visible;-->
+<!--left: 20px;-->
+<!--top: 100px;-->
+<!--height : 1000px;-->
+<!--width: 230px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+<!--.column_middle{-->
+<!--position:absolute;-->
+<!--visibility:visible;-->
+<!--left: 400px;-->
+<!--top: 100px;-->
+<!--height: 350px;-->
+<!--width: 700px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+<!--.column_right{-->
+<!--position:absolute;-->
+<!--visibility:visible;-->
+<!--left: 1150px;-->
+<!--top: 100px;-->
+<!--height: 350px;-->
+<!--width: 700px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+<!--.column_down{-->
+<!--position:absolute;-->
+<!--visibility:visible;-->
+<!--left: 300px;-->
+<!--top: 450px;-->
+<!--height: 400px;-->
+<!--width: 1650px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+<!--.column_middle2{-->
+<!--position:absolute;-->
+<!--visibility:visible;-->
+<!--left: 400px;-->
+<!--top: 500px;-->
+<!--height: 350px;-->
+<!--width: 700px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+<!--.column_right2{-->
+<!--position:absolute;-->
+<!--visibility:visible;-->
+<!--left: 1150px;-->
+<!--top: 500px;-->
+<!--height: 350px;-->
+<!--width: 700px;-->
+<!--z-index: 200px;-->
+<!--}-->
+
+
+<!--    .column_middle3{-->
+<!--    position:absolute;-->
+<!--    visibility:visible;-->
+<!--    left: 400px;-->
+<!--    top: 900px;-->
+<!--    height: 350px;-->
+<!--    width: 700px;-->
+<!--    z-index: 200px;-->
+<!--    }-->
+
+<!--      </style>-->
+
+
+<!--    </head>-->
+
+<!--    <body>-->
+
+
+<!--    &lt;!&ndash; * Header Area Start * &ndash;&gt;-->
+<!--    <div class="header1">-->
+<!--    <header class="header-area header-sticky" style="position:fixed;">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <nav class="main-nav">-->
+<!--                        &lt;!&ndash; * Logo Start * &ndash;&gt;-->
+<!--                        <div style="padding-left:20px;">-->
+<!--                        <img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;" >-->
+<!--                        <div class="logo sspLogo" style="float: left">SSP<em> Rupnagar District</em></div>-->
+<!--                        </div>-->
+<!--                            <ul class="nav">-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('mark')}}" class="active">Home</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('marksform')}}">Fill Marks</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('ssportal')}}">Compare</a></li>-->
+
+<!--                            &lt;!&ndash; <li class="scroll-to-section"><a href="">Logout</a></li>  &ndash;&gt;-->
+<!--                            <li class="main-button"><a href="{{url_for('logout')}}">Logout</a></li>-->
+<!--                        </ul>-->
+<!--                        <a class='menu-trigger'>-->
+<!--                            <span>Menu</span>-->
+<!--                        </a> &ndash;&gt;-->
+
+<!--                    </nav>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--    </div>-->
+
+<!--<div class = "row">-->
+<!--    <div class = "column_left">-->
+<!--    <table class="table" style="border:1px solid black; position:fixed; height:100%; border-collapse: collapse;-->
+<!--    border: solid black 1px;-->
+<!--    border-radius: 6px;-->
+<!--    display: flex;-->
+<!--    flex-flow: column;-->
+<!--    height: 100%;-->
+<!--    background-color: white;">-->
+<!--        <tr>-->
+<!--            <td colspan="3" style="background-color:#FFFFFF; color: #e89a09; font-size: 27px;"><b>RAKING DASHBOARD</b></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>PS Name</th>-->
+<!--            <th>Marks</th>-->
+<!--            <th>Ranks</th>-->
+
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            {% for each in values %}-->
+<!--            <tr>-->
+<!--                {% for element in each %}-->
+<!--                    <td bgcolor="white">{{ element }}</td>-->
+<!--                {% endfor %}-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</div>-->
+
+
+
+
+<!--   &lt;!&ndash;    to be seen here  GRaph 1&#45;&#45; ALL GRAPHS CLASS_&ndash;&gt;-->
+
+
+<!--   <div class="column_middle item1">-->
+
+<!--                 <canvas id="myChart" style="background-color: rgb(255, 255, 255); "></canvas>-->
+
+
+<!--    <script>-->
+<!--          Chart.defaults.global.responsive = true;-->
+<!--          var ctx=document.getElementById("myChart").getContext("2d");-->
+
+<!--          var newbar =new Chart( ctx, {-->
+<!--            type: 'horizontalBar',-->
+<!--            data : {-->
+<!--                labels: {{labels1 | safe}},-->
+<!--               datasets : [-->
+<!--                {-->
+<!--                    label : 'cases_of_henius_crime ',-->
+<!--                    data  : {{ values1 | safe}},-->
+<!--                    backgroundColor : 'green'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'total_caese_under_detection_work',-->
+<!--                    data  : {{ values2 | safe}},-->
+<!--                    backgroundColor : 'blue'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'property_disposal',-->
+<!--                    data  : {{ values3 | safe}},-->
+<!--                    backgroundColor : 'yellow'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'arrest_of_po',-->
+<!--                    data  : {{ values4 | safe}},-->
+<!--                    backgroundColor : 'pink'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'untrace_cases_put_in_court',-->
+<!--                    data  : {{ values100 | safe}},                                 //values5 initially-->
+<!--                    backgroundColor : 'grey'-->
+<!--                }-->
+<!--               ]-->
+<!--            },-->
+<!--            options:{-->
+<!--            scales: {-->
+<!--            xAxes: [{-->
+<!--                stacked: true-->
+<!--                }],-->
+<!--            yAxes: [{-->
+<!--                stacked: true-->
+<!--            }]-->
+<!--                }-->
+<!--            }-->
+<!--          });-->
+
+<!--     </script>-->
+
+<!--     </div>-->
+
+
+
+
+<!--    &lt;!&ndash;         Graph2&ndash;&gt;-->
+<!--   <div class="column_right item1">-->
+<!--   <canvas id="myG2Chart" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+
+
+<!--    <script>-->
+<!--          Chart.defaults.global.responsive = true;-->
+<!--          var ctx=document.getElementById("myG2Chart").getContext("2d");-->
+
+<!--          var newbar =new Chart( ctx, {-->
+<!--            type: 'bar',-->
+<!--            data : {-->
+<!--                labels: {{labelsG2 | safe}},-->
+<!--               datasets : [-->
+<!--                {-->
+<!--                    label : 'ndps',-->
+<!--                    data  : {{ valuesG2_1 | safe}},-->
+<!--                    backgroundColor : 'green'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'commercial_recovery',-->
+<!--                    data  : {{ valuesG2_2 | safe}},-->
+<!--                    backgroundColor : 'blue'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'arm_act',-->
+<!--                    data  : {{ valuesG2_3 | safe}},-->
+<!--                    backgroundColor : 'yellow'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'excise_act',-->
+<!--                    data  : {{ valuesG2_4 | safe}},-->
+<!--                    backgroundColor : 'pink'-->
+<!--                },-->
+<!--                {-->
+<!--                     label : 'gambling_act',-->
+<!--                    data  : {{ valuesG2_5 | safe}},-->
+<!--                    backgroundColor : 'grey'-->
+<!--                }-->
+<!--               ]-->
+<!--            },-->
+<!--            options:{-->
+<!--            scales: {-->
+<!--            xAxes: [{-->
+<!--                stacked: true-->
+<!--                }],-->
+<!--            yAxes: [{-->
+<!--                stacked: true-->
+<!--            }]-->
+<!--                }-->
+<!--            }-->
+<!--          });-->
+
+<!--     </script>-->
+<!--   </div>-->
+
+
+
+<!--&lt;!&ndash;    bottomGraphs&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="column-middle item1">&ndash;&gt;-->
+<!--&lt;!&ndash;        <canvas id="Chart1"></canvas>&ndash;&gt;-->
+<!--&lt;!&ndash;   <div class='row'>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class='column'>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class='orange-column'>&ndash;&gt;-->
+<!--   &lt;!&ndash; width="600" height="400"&#45;&#45; been commented out&ndash;&gt;-->
+<!--&lt;!&ndash;        <canvas id="Chart2" width="600" height="400"></canvas>&ndash;&gt;-->
+<!--&lt;!&ndash;        <canvas id="Chart3" width="600" height="400"></canvas>&ndash;&gt;-->
+<!--    <div class="column_middle2">-->
+<!--        <canvas id="Chart1" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--<script>-->
+<!--Chart.defaults.global.responsive = true;-->
+<!-- var ctx=document.getElementById("Chart1").getContext("2d");-->
+
+<!--          var lineChart =new Chart( ctx, {-->
+<!--            type : "doughnut" ,-->
+
+<!--            data : {-->
+<!--               labels : {{ labels | safe }},-->
+<!--               datasets : [-->
+<!--                {-->
+<!--                   data  : {{ data_negligence | safe}},-->
+<!--                   backgroundColor : [-->
+<!--                                           "rgba(237, 127, 104, 1)",-->
+<!--                                            "rgba(237, 169, 104, 1)",-->
+<!--                                            "rgba(244, 220, 103, 1)",-->
+<!--                                            "rgba(185, 244, 103, 1)",-->
+<!--                                            "rgba(113, 244, 103, 1)",-->
+<!--                                            "rgba(103, 244, 171, 1)",-->
+<!--                                            "rgba(103, 244, 232, 1)",-->
+<!--                                            "rgba(103, 134, 244, 1)",-->
+<!--                                            "rgba(178, 103, 244, 1)",-->
+<!--                                            "rgba(244, 103, 223, 1)"-->
+<!--                                     ]-->
+<!--                }-->
+<!--               ]-->
+<!--            },-->
+<!--      options : {-->
+<!--              responsive : true,-->
+<!--                title: {-->
+<!--                    display: true,-->
+<!--                    text: 'Negligence '-->
+
+<!--                }-->
+<!--             }-->
+<!--          });-->
+
+<!--</script>-->
+<!--</div>-->
+
+
+
+
+
+<!--&lt;!&ndash;        <div class="column-right item1">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class='column'>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class='orange-column'>&ndash;&gt;-->
+
+<!--    <div class="column_right2">-->
+<!--<canvas id="Chart2" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--<script>-->
+<!-- Chart.defaults.global.responsive = true;-->
+<!-- var ctx=document.getElementById("Chart2").getContext("2d");-->
+
+<!--          var lineChart =new Chart( ctx, {-->
+<!--            type : "doughnut" ,-->
+
+<!--            data : {-->
+<!--               labels : {{ labels | safe }},-->
+<!--               datasets : [-->
+<!--                {-->
+<!--                   data  : {{ data_cleanliness | safe}},-->
+<!--                    backgroundColor : [-->
+<!--                                            "rgba(237, 127, 104, 1)",-->
+<!--                                                "rgba(237, 169, 104, 1)",-->
+<!--                                                "rgba(244, 220, 103, 1)",-->
+<!--                                                "rgba(185, 244, 103, 1)",-->
+<!--                                                "rgba(113, 244, 103, 1)",-->
+<!--                                                "rgba(103, 244, 171, 1)",-->
+<!--                                                "rgba(103, 244, 232, 1)",-->
+<!--                                                "rgba(103, 134, 244, 1)",-->
+<!--                                                "rgba(178, 103, 244, 1)",-->
+<!--                                                "rgba(244, 103, 223, 1)"-->
+<!--                                                                                     ]-->
+<!--                }-->
+<!--               ]-->
+<!--            },-->
+<!--      options : {-->
+<!--              responsive : true,-->
+<!--                title: {-->
+<!--                    display: true,-->
+<!--                    text: 'Cleanliness'-->
+<!--                }-->
+<!--            }-->
+<!--          });-->
+
+<!--     </script>-->
+<!--        </div>-->
+
+
+
+
+
+<!--        <div class="column-middle3" style="-->
+<!--    position:absolute;-->
+<!--    visibility:visible;-->
+<!--    left: 400px;-->
+<!--    top: 900px;-->
+<!--    height: 350px;-->
+<!--    width: 700px;-->
+<!--    z-index: 200px;">-->
+<!--<canvas id="Chart3" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--<script>-->
+<!--Chart.defaults.global.responsive = true;-->
+<!--var ctx=document.getElementById("Chart3").getContext("2d");-->
+
+<!--          var lineChart =new Chart( ctx, {-->
+<!--            type : "doughnut" ,-->
+
+<!--            data : {-->
+<!--               labels : {{ labels | safe }},-->
+<!--               datasets : [-->
+<!--                {-->
+<!--                   data  : {{ data_handling_law | safe}},-->
+<!--                    backgroundColor : [-->
+<!--                                           "rgba(237, 127, 104, 1)",-->
+<!--                                            "rgba(237, 169, 104, 1)",-->
+<!--                                            "rgba(244, 220, 103, 1)",-->
+<!--                                            "rgba(185, 244, 103, 1)",-->
+<!--                                            "rgba(113, 244, 103, 1)",-->
+<!--                                            "rgba(103, 244, 171, 1)",-->
+<!--                                            "rgba(103, 244, 232, 1)",-->
+<!--                                            "rgba(103, 134, 244, 1)",-->
+<!--                                            "rgba(178, 103, 244, 1)",-->
+<!--                                            "rgba(244, 103, 223, 1)"-->
+<!--                                                                                 ]-->
+<!--                }-->
+<!--               ]-->
+<!--            },-->
+<!--      options : {-->
+<!--              responsive : true,-->
+<!--                title: {-->
+<!--                    display: true,-->
+<!--                    text: 'Handling of Law'-->
+
+<!--                }-->
+
+<!--            }-->
+<!--          });-->
+
+
+<!--</script>-->
+<!--    </div>-->
+
+<!--    <div class="column-right3" style=" position:absolute;-->
+<!--    visibility:visible;-->
+<!--    left: 1150px;-->
+<!--    top: 900px;-->
+<!--    height: 350px;-->
+<!--    width: 700px;-->
+<!--    z-index: 200px;">-->
+<!--       <canvas id="myChart6" style=" background-color: rgba(255,255,255,1);"></canvas>-->
+<!--    <script>-->
+<!--          Chart.defaults.global.responsive = true;-->
+<!--          var ctx=document.getElementById("myChart6").getContext("2d");-->
+
+<!--          window.newbar =new Chart( ctx, {-->
+<!--            type: 'bubble',-->
+<!--            data : {-->
+
+<!--               -->
+
+
+
+
+<!--     </script>-->
+
+
+<!--</div>-->
+
+<!--    </div>  &lt;!&ndash;for flex&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>SSP Rupnagar Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="SSP Rupnagar" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<!--<link href="styles/bootstrap.css" rel='stylesheet'>-->
+	<link href= "{{url_for('static', filename = 'styles/bootstrap.css')}}" rel='stylesheet'>
+
+<!-- Custom CSS -->
+<!--<link href="styles/style.css" rel='stylesheet' >-->
+	<link  href="{{url_for('static', filename = 'styles/style.css')}}" rel='stylesheet'>
+
+<!-- font-awesome icons CSS -->
+<link href="{{url_for('static', filename ='styles/font-awesome.css')}}" rel="stylesheet">
+<!-- //font-awesome icons CSS-->
+
+<!-- side nav css file -->
+<!--<link href='styles/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>-->
+	<link href="{{url_for('static', filename = 'styles/SidebarNav.min.css')}}" media='all' rel='stylesheet' >
+<!-- //side nav css file -->
+
+ <!-- js-->
+<!--<script src="javascript/jquery-1.11.1.min.js"></script>-->
+<!--<script src="javascript/modernizr.custom.js"></script>-->
+
+	<script src= "{{url_for('static', filename = 'javascript/jquery-1.11.1.min.js')}}"></script>
+<script src= "{{url_for('static', filename = 'javascript/modernizr.custom.js')}}" ></script>
+
+<!--webfonts-->
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+
+<!-- chart -->
+<!--<script src="javascript/Chart.js"></script>-->
+	<script src= "{{url_for('static', filename = 'javascript/Chart.js')}}" ></script>
+<!-- //chart -->
+
+<!-- Metis Menu -->
+<!--<script src="javascript/metisMenu.min.js"></script>-->
+<!--<script src="javascript/custom.js"></script>-->
+<!--<link href="styles/custom.css" rel="stylesheet">-->
+
+	<script src= "{{url_for('static', filename = 'javascript/metisMenu.min.js')}}"></script>
+<script src= "{{url_for('static', filename = 'javascript/custom.js')}}"></script>
+
+<link href= "{{url_for('static', filename = 'styles/custom.css')}}" rel="stylesheet">
+<!--//Metis Menu -->
+<style>
+/* #chartdiv {
+  width: 100%;
+  height: 295px;
+} */
+#underspllawChart{
+  width: 100%;
+  height: 295px;
+}
+
+#mynewchart{
+    width: 100%;
+    height: 400px;
+}
+
+
+.logo {
+  line-height: 80px;
+  color:rgb(17, 17, 17);
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: left; */
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-left: 100px;
+  background:white;
+}
+.logo em {
+  font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+}
+
+span.dashboard_text {
+    font-size: 15px;
+    text-transform: capitalize;
+    display: block;
+    letter-spacing: 1px;
+    padding-left: 35px;
+	color: white;
+	margin-left: 30px;
+}
+.navbar-header.h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+span.dashboard_head
+{   font-size: 20px;
+	color: white;
+	text-align:center;
+	margin-left: 35px;
+}
+
+/* additional in this */
+.widget {
+    padding: 0;
+    margin-top: 1%;
+}
+</head>
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+			<h1><img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;">
+				<span class="dashboard_head" >Punjab </span>  <span class="dashboard_text">Police dashboard</span></a></h1>
+
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <div style="padding-top:30px;"></div>
+            <table class="table" style="border:1px solid black; height:100%; border-collapse: collapse;
+    border: solid black 1px;
+    border-radius: 6px;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: white;">
+        <tr>
+            <td colspan="3" style="background-color:#FFFFFF; color: #e89a09; font-size: 27px;"><b>RANKING TABLE</b></td>
+        </tr>
+        <tr>
+            <th>PS Name</th>
+            <th>Marks</th>
+            <th>Ranks</th>
+        </tr>
+        <tr>
+            {% for each in values %}
+            <tr>
+                {% for element in each %}
+                    <td bgcolor="white">{{ element }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left"   style="float: left;
+    width: 30%;">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+				<!-- <div class="profile_details_left"--><!--notifications of menu start -->
+				<!----<ul class="nofitications-dropdown">
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 3 new messages</h3>
+									</div>
+								</li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/1.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet</p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li class="odd"><a href="#">
+									<div class="user_img"><img src="images/4.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								  <div class="clearfix"></div>
+								</a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/3.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/2.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li>
+									<div class="notification_bottom">
+										<a href="#">See all messages</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 3 new notification</h3>
+									</div>
+								</li>
+								<li><a href="#">
+									<div class="user_img"><img src="images/4.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet</p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								  <div class="clearfix"></div>
+								 </a></li>
+								 <li class="odd"><a href="#">
+									<div class="user_img"><img src="images/1.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								 </a></li>
+								 <li><a href="#">
+									<div class="user_img"><img src="images/3.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								 </a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/2.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								 <li>
+									<div class="notification_bottom">
+										<a href="#">See all notifications</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 8 pending task</h3>
+									</div>
+								</li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Database update</span><span class="percentage">40%</span>
+										<div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										<div class="bar yellow" style="width:40%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+									   <div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										 <div class="bar green" style="width:90%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+										<div class="clearfix"></div>
+									</div>
+								   <div class="progress progress-striped active">
+										 <div class="bar red" style="width: 33%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+									   <div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										 <div class="bar  blue" style="width: 80%;"></div>
+									</div>
+								</a></li>
+								<li>
+									<div class="notification_bottom">
+										<a href="#">See all pending tasks</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div> -->
+				<!--notification menu end -->
+				<!-- <div class="clearfix"> </div> -->
+				<a href="index.html" class="logo">SSP<em> PORTAL</em></a>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right" style="float: right;
+    width: 53%; height:100%; margin-top: 0.7%;">
+
+
+
+				<!--search-box-->
+				<!--//end-search-box-->
+
+				<div class="profile_details" style="width:100%; height:100%;">
+					<ul>
+
+
+<!--						<ul class="nav">-->
+<!--                            <li class="scroll-to-section"><a href="#" class="active">Home</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Challan</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Investigation</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Recovery</a></li>-->
+<!--                            &lt;!&ndash; <li class="scroll-to-section"><a href="">Logout</a></li>  &ndash;&gt;-->
+<!--                            <li class="main-button"><a href="#">Logout</a></li>-->
+<!--                        </ul>-->
+
+<!--						<li class="dropdown profile_details_drop">-->
+
+
+
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('marksform')}}" style="font-size: 1.7rem; font-weight: 500;">Fill Marks</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('mark')}}" style="font-size: 1.7rem; font-weight: 500;">Dashboard</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left:2.6%;">
+										<a href="{{url_for('tablesSSP')}}" style="font-size: 1.7rem; font-weight: 500;">Edit Data</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('ssportal')}}" style="font-size: 1.7rem; font-weight: 500;">Compare PS</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+						        <div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('SSPuploading')}}" style="font-size: 1.7rem; font-weight: 500;">Upload Data</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="profile_img" >
+									<!-- <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>  -->
+									<div class="user-name" style="margin-right: 2%;float: right;">
+										<a href="{{url_for('logout')}}" style="font-size: 1.7rem; font-weight: 500;"><i class="fa fa-sign-out"></i> Logout</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+									</div>
+									<!-- <i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i> -->
+									<div class="clearfix"></div>
+								</div>
+
+							<!-- <ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul> -->
+<!--						</li>-->
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //header-ends -->
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+
+				<h2 class="title1">Charts</h2>
+<!--            Top graphs -->
+
+
+<!--					<div class="clearfix"> </div>-->
+<!--				</div>-->
+
+	<!-- for amcharts js -->
+			 <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+	<!-- for amcharts js -->
+    <script src= "{{url_for('static', filename = 'javascript/index2.js')}}" ></script>
+
+<!--Top left graph-->
+<!--            <div class="charts">-->
+			<div class="charts">
+
+                 <div class="col-md-6 charts-grids w3ls-high">
+					<h4 class="title">Graph 1</h4>
+					<div id="chartdivtop1"></div>
+                             <canvas id="mychart" style="background-color: rgb(255, 255, 255); "></canvas>
+                            <script>
+                          Chart.defaults.global.responsive = true;
+                          var ctx=document.getElementById("mychart").getContext("2d");
+
+                          var newbar =new Chart( ctx, {
+                            type: 'horizontalBar',
+                            data : {
+                                labels: {{labels1 | safe}},
+                               datasets : [
+                                {
+                                    label : 'cases_of_henius_crime ',
+                                    data  : {{ values1 | safe}},
+                                    backgroundColor : 'green'
+                                },
+                                {
+                                     label : 'total_caese_under_detection_work',
+                                    data  : {{ values2 | safe}},
+                                    backgroundColor : 'blue'
+                                },
+                                {
+                                     label : 'property_disposal',
+                                    data  : {{ values3 | safe}},
+                                    backgroundColor : 'yellow'
+                                },
+                                {
+                                     label : 'arrest_of_po',
+                                    data  : {{ values4 | safe}},
+                                    backgroundColor : 'pink'
+                                },
+                                {
+                                     label : 'untrace_cases_put_in_court',
+                                    data  : {{ values100 | safe}},                                 //values5 initially
+                                    backgroundColor : 'grey'
+                                }
+                               ]
+                            },
+                            options:{
+                                        scales: {
+                                                    xAxes: [{
+                                                        stacked: true
+                                                        }],
+                                                    yAxes: [{
+                                                        stacked: true
+                                                    }]
+                                                }
+
+
+
+
+                                }
+                          });
+
+                     </script>
+
+
+
+
+
+
+
+
+                        </div>
+<!--					</div>-->
+<!--            </div>-->
+<!--                Top right graph-->
+<!--					<div class="col-md-6 agileits-high charts-grids">-->
+<!--						<div class="hightchat-grid1">-->
+<!--							<h4 class="title">Multiple y-axis</h4>-->
+<!--							<div id="example-6"></div>-->
+            <div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>Graph 2</h3>
+                                </div>
+                              <canvas id="myG2Chart" style=" background-color: rgba(255,255,255,1); "></canvas>
+
+
+                        <script>
+                              Chart.defaults.global.responsive = true;
+                              var ctx=document.getElementById("myG2Chart").getContext("2d");
+
+                              var newbar =new Chart( ctx, {
+                                type: 'bar',
+                                data : {
+                                    labels: {{labelsG2 | safe}},
+                                   datasets : [
+                                    {
+                                        label : 'ndps',
+                                        data  : {{ valuesG2_1 | safe}},
+                                        backgroundColor : 'green'
+                                    },
+                                    {
+                                         label : 'commercial_recovery',
+                                        data  : {{ valuesG2_2 | safe}},
+                                        backgroundColor : 'blue'
+                                    },
+                                    {
+                                         label : 'arm_act',
+                                        data  : {{ valuesG2_3 | safe}},
+                                        backgroundColor : 'yellow'
+                                    },
+                                    {
+                                         label : 'excise_act',
+                                        data  : {{ valuesG2_4 | safe}},
+                                        backgroundColor : 'pink'
+                                    },
+                                    {
+                                         label : 'gambling_act',
+                                        data  : {{ valuesG2_5 | safe}},
+                                        backgroundColor : 'grey'
+                                    }
+                                   ]
+                                },
+                                options:{
+                                scales: {
+                                xAxes: [{
+                                    stacked: true
+                                    }],
+                                yAxes: [{
+                                    stacked: true
+                                }]
+                                    }
+                                }
+                              });
+
+                         </script>
+
+<!--                            <canvas id="Chart2" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--                    <script>-->
+<!--                     Chart.defaults.global.responsive = true;-->
+<!--                     var ctx=document.getElementById("Chart2").getContext("2d");-->
+
+<!--                              var lineChart =new Chart( ctx, {-->
+<!--                                type : "doughnut" ,-->
+
+<!--                                data : {-->
+<!--                                   labels : {{ labels | safe }},-->
+<!--                                   datasets : [-->
+<!--                                    {-->
+<!--                                       data  : {{ data_cleanliness | safe}},-->
+<!--                                        backgroundColor : [-->
+<!--                                                                "rgba(237, 127, 104, 1)",-->
+<!--                                                                    "rgba(237, 169, 104, 1)",-->
+<!--                                                                    "rgba(244, 220, 103, 1)",-->
+<!--                                                                    "rgba(185, 244, 103, 1)",-->
+<!--                                                                    "rgba(113, 244, 103, 1)",-->
+<!--                                                                    "rgba(103, 244, 171, 1)",-->
+<!--                                                                    "rgba(103, 244, 232, 1)",-->
+<!--                                                                    "rgba(103, 134, 244, 1)",-->
+<!--                                                                    "rgba(178, 103, 244, 1)",-->
+<!--                                                                    "rgba(244, 103, 223, 1)"-->
+<!--                                                                                                         ]-->
+<!--                                    }-->
+<!--                                   ]-->
+<!--                                },-->
+<!--                          options : {-->
+<!--                                  responsive : true,-->
+<!--                                    title: {-->
+<!--                                        display: true,-->
+<!--                                        text: 'Cleanliness'-->
+<!--                                    }-->
+<!--                                }-->
+<!--                              });-->
+
+<!--                         </script>-->
+						</div>
+					</div>
+					<div class="clearfix"></div>
+			</div>
+<!--            </div>-->
+
+
+
+
+<!--Middle graphs-->
+            <!-- for amcharts js -->
+            <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+
+			<!-- for amcharts js -->
+<!--middle left graph-->
+			<div class="charts">
+				<div class="col-md-6 charts-grids w3ls-high">
+					<h4 class="title">Graph 3</h4>
+
+                     <canvas id="Chart1" style=" background-color: rgba(255,255,255,1); "></canvas>
+                    <script>
+                    Chart.defaults.global.responsive = true;
+                     var ctx=document.getElementById("Chart1").getContext("2d");
+
+                              var lineChart =new Chart( ctx, {
+                                type : "doughnut" ,
+
+                                data : {
+                                   labels : {{ labels | safe }},
+                                   datasets : [
+                                    {
+                                       data  : {{ data_negligence | safe}},
+                                       backgroundColor : [
+                                                               "rgba(237, 127, 104, 1)",
+                                                                "rgba(237, 169, 104, 1)",
+                                                                "rgba(244, 220, 103, 1)",
+                                                                "rgba(185, 244, 103, 1)",
+                                                                "rgba(113, 244, 103, 1)",
+                                                                "rgba(103, 244, 171, 1)",
+                                                                "rgba(103, 244, 232, 1)",
+                                                                "rgba(103, 134, 244, 1)",
+                                                                "rgba(178, 103, 244, 1)",
+                                                                "rgba(244, 103, 223, 1)"
+                                                         ]
+                                    }
+                                   ]
+                                },
+                          options : {
+                                  responsive : true,
+                                    title: {
+                                        display: true,
+                                        text: 'Negligence '
+
+                                    }
+                                 }
+                              });
+
+                    </script>
+
+<!--                    <canvas id="Chart3" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--                <script>-->
+<!--                Chart.defaults.global.responsive = true;-->
+<!--                var ctx=document.getElementById("Chart3").getContext("2d");-->
+
+<!--                          var lineChart =new Chart( ctx, {-->
+<!--                            type : "doughnut" ,-->
+
+<!--                            data : {-->
+<!--                               labels : {{ labels | safe }},-->
+<!--                               datasets : [-->
+<!--                                {-->
+<!--                                   data  : {{ data_handling_law | safe}},-->
+<!--                                    backgroundColor : [-->
+<!--                                                           "rgba(237, 127, 104, 1)",-->
+<!--                                                            "rgba(237, 169, 104, 1)",-->
+<!--                                                            "rgba(244, 220, 103, 1)",-->
+<!--                                                            "rgba(185, 244, 103, 1)",-->
+<!--                                                            "rgba(113, 244, 103, 1)",-->
+<!--                                                            "rgba(103, 244, 171, 1)",-->
+<!--                                                            "rgba(103, 244, 232, 1)",-->
+<!--                                                            "rgba(103, 134, 244, 1)",-->
+<!--                                                            "rgba(178, 103, 244, 1)",-->
+<!--                                                            "rgba(244, 103, 223, 1)"-->
+<!--                                                                                                 ]-->
+<!--                                }-->
+<!--                               ]-->
+<!--                            },-->
+<!--                      options : {-->
+<!--                              responsive : true,-->
+<!--                                title: {-->
+<!--                                    display: true,-->
+<!--                                    text: 'Handling of Law'-->
+
+<!--                                }-->
+
+<!--                            }-->
+<!--                          });-->
+
+
+<!--                </script>-->
+				</div>
+<!--                middle right-->
+				<div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>Graph 4</h3>
+                                </div>
+
+<!--              <canvas id="myG2Chart" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+
+
+<!--                <script>-->
+<!--                      Chart.defaults.global.responsive = true;-->
+<!--                      var ctx=document.getElementById("myG2Chart").getContext("2d");-->
+
+<!--                      var newbar =new Chart( ctx, {-->
+<!--                        type: 'bar',-->
+<!--                        data : {-->
+<!--                            labels: {{labelsG2 | safe}},-->
+<!--                           datasets : [-->
+<!--                            {-->
+<!--                                label : 'ndps',-->
+<!--                                data  : {{ valuesG2_1 | safe}},-->
+<!--                                backgroundColor : 'green'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'commercial_recovery',-->
+<!--                                data  : {{ valuesG2_2 | safe}},-->
+<!--                                backgroundColor : 'blue'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'arm_act',-->
+<!--                                data  : {{ valuesG2_3 | safe}},-->
+<!--                                backgroundColor : 'yellow'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'excise_act',-->
+<!--                                data  : {{ valuesG2_4 | safe}},-->
+<!--                                backgroundColor : 'pink'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'gambling_act',-->
+<!--                                data  : {{ valuesG2_5 | safe}},-->
+<!--                                backgroundColor : 'grey'-->
+<!--                            }-->
+<!--                           ]-->
+<!--                        },-->
+<!--                        options:{-->
+<!--                        scales: {-->
+<!--                        xAxes: [{-->
+<!--                            stacked: true-->
+<!--                            }],-->
+<!--                        yAxes: [{-->
+<!--                            stacked: true-->
+<!--                        }]-->
+<!--                            }-->
+<!--                        }-->
+<!--                      });-->
+
+<!--                 </script>-->
+                    <canvas id="Chart2" style=" background-color: rgba(255,255,255,1); "></canvas>
+            <script>
+             Chart.defaults.global.responsive = true;
+             var ctx=document.getElementById("Chart2").getContext("2d");
+
+                      var lineChart =new Chart( ctx, {
+                        type : "doughnut" ,
+
+                        data : {
+                           labels : {{ labels | safe }},
+                           datasets : [
+                            {
+                               data  : {{ data_cleanliness | safe}},
+                                backgroundColor : [
+                                                        "rgba(237, 127, 104, 1)",
+                                                            "rgba(237, 169, 104, 1)",
+                                                            "rgba(244, 220, 103, 1)",
+                                                            "rgba(185, 244, 103, 1)",
+                                                            "rgba(113, 244, 103, 1)",
+                                                            "rgba(103, 244, 171, 1)",
+                                                            "rgba(103, 244, 232, 1)",
+                                                            "rgba(103, 134, 244, 1)",
+                                                            "rgba(178, 103, 244, 1)",
+                                                            "rgba(244, 103, 223, 1)"
+                                                                                                 ]
+                            }
+                           ]
+                        },
+                  options : {
+                          responsive : true,
+                            title: {
+                                display: true,
+                                text: 'Cleanliness'
+                            }
+                        }
+                      });
+
+                 </script>
+
+				</div>
+			</div>
+                <div class="clearfix"></div>
+		 </div>
+
+
+<!--			</div>-->
+<!--				<script  src="javascript/index.js"></script>-->
+            <script src="{{url_for('static', filename = 'javascript/index.js')}}"></script>
+
+<!--			</div>-->
+
+<!--		</div>-->
+
+
+
+<!--    bottom down graphs-->
+
+    <!-- for amcharts js -->
+            <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+
+
+<!--            bottom left-->
+
+			<div class="charts">
+
+                 <div class="col-md-6 charts-grids w3ls-high">
+					<h4 class="title">Graph 5</h4>
+					<div id="chartdiv1"></div>
+<!--					<div class="col-md-4 charts-grids widget">-->
+<!--						<div class="card-header">-->
+<!--							<h3>Graph 5</h3>-->
+<!--						</div>-->
+<!--					<div id="container1"></div>-->
+
+                            <canvas id="Chart3" style=" background-color: rgba(255,255,255,1); "></canvas>
+                <script>
+                Chart.defaults.global.responsive = true;
+                var ctx=document.getElementById("Chart3").getContext("2d");
+
+                          var lineChart =new Chart( ctx, {
+                            type : "doughnut" ,
+
+                            data : {
+                               labels : {{ labels | safe }},
+                               datasets : [
+                                {
+                                   data  : {{ data_handling_law | safe}},
+                                    backgroundColor : [
+                                                           "rgba(237, 127, 104, 1)",
+                                                            "rgba(237, 169, 104, 1)",
+                                                            "rgba(244, 220, 103, 1)",
+                                                            "rgba(185, 244, 103, 1)",
+                                                            "rgba(113, 244, 103, 1)",
+                                                            "rgba(103, 244, 171, 1)",
+                                                            "rgba(103, 244, 232, 1)",
+                                                            "rgba(103, 134, 244, 1)",
+                                                            "rgba(178, 103, 244, 1)",
+                                                            "rgba(244, 103, 223, 1)"
+                                                                                                 ]
+                                }
+                               ]
+                            },
+                      options : {
+                              responsive : true,
+                                title: {
+                                    display: true,
+                                    text: 'Handling of Law'
+
+                                }
+
+                            }
+                          });
+
+
+                </script>
+				</div>
+<!--                bottom right-->
+                <div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>Graph 6</h3>
+                                </div>
+<!--				<div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">-->
+<!--				<div class="agileinfo-cdr">-->
+<!--								<div class="card-header">-->
+<!--                                    <h3>Graph 6</h3>-->
+<!--                                </div>-->
+
+               <canvas id="myChart6" style=" background-color: rgba(255,255,255,1);"></canvas>
+                <script>
+                      Chart.defaults.global.responsive = true;
+                      var ctx=document.getElementById("myChart6").getContext("2d");
+
+                      var newbar =new Chart( ctx, {
+                            type: 'horizontalBar',
+                            data : {
+                                labels: {{labels1 | safe}},
+                               datasets : [
+                                {
+                                    label : 'percent of cases submitted in court ',
+                                    data  : {{ valuesb1 | safe}},
+                                    backgroundColor : 'green'
+                                },
+                                {
+                                     label : 'percent of disposal of complaints',
+                                    data  : {{ valuesb2 | safe}},
+                                    backgroundColor : 'blue'
+                                },
+                                {
+                                     label : 'percent of property disposal',
+                                    data  : {{ valuesb3 | safe}},
+                                    backgroundColor : 'pink'
+                                }
+                               ]
+                            },
+                            options:{
+                                        scales: {
+                                                    xAxes: [{
+                                                        stacked: true
+                                                        }],
+                                                    yAxes: [{
+                                                        stacked: true
+                                                    }]
+                                                }
+
+
+
+
+                                }
+                          });
+
+
+
+
+                 </script>
+
+
+
+
+				</div>
+			</div>
+                <div class="clearfix"></div>  <!--extra added-->
+		</div>
+
+<!--				<div class="clearfix"></div>-->
+<!--			</div>-->
+<!--				<script  src="javascript/index.js"></script>-->
+            <script src="{{url_for('static', filename = 'javascript/index.js')}}"></script>
+
+<!--			</div>-->
+
+<!--		</div>-->
+
+
+<!--    <div class="charts">-->
+<!--					<div class="col-md-4 charts-grids widget">-->
+<!--						<div class="card-header">-->
+<!--							<h3>Bar chart</h3>-->
+<!--						</div>-->
+
+<!--						<div id="container" style="width: 100%; height:270px;">-->
+<!--							<canvas id="canvas"></canvas>-->
+<!--						</div>-->
+<!--						<button id="randomizeData">Randomize Data</button>-->
+<!--						<button id="addDataset">Add Dataset</button>-->
+<!--						<button id="removeDataset">Remove Dataset</button>-->
+<!--						<button id="addData">Add Data</button>-->
+<!--						<button id="removeData">Remove Data</button>-->
+
+<!--					</div>-->
+
+<!--					<div class="col-md-4 charts-grids widget states-mdl">-->
+<!--						<div class="card-header">-->
+<!--							<h3>Graph 6</h3>-->
+<!--						</div>-->
+<!--						<div id="chartdiv1"></div>-->
+<!--					</div>-->
+<!--                     <canvas id="myChart6" style=" background-color: rgba(255,255,255,1);"></canvas>-->
+<!--                <script>-->
+<!--                      Chart.defaults.global.responsive = true;-->
+<!--                      var ctx=document.getElementById("myChart6").getContext("2d");-->
+
+<!--                      window.newbar =new Chart( ctx, {-->
+<!--                        type: 'bubble',-->
+<!--                        data : {-->
+
+<!--                            datasets : [{-->
+<!--                                label : 'ps1',-->
+<!--                                data: [{-->
+
+
+
+
+<!--                 </script>-->
+<!--					<div class="clearfix"> </div>-->
+<!--				</div>-->
+
+	<!-- new added graphs chart js-->
+
+            </div>
+
+		</div>
+
+    <script src="{{url_for('static', filename = 'javascript/Chart.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename = 'javascript/utils.js')}}"></script>
+
+
+
+	<!-- Classie --><!-- for toggle left push menu script -->
+		<script src="{{url_for('static', filename = 'javascript/classie.js')}}"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+	<!--scrolling js-->
+	<script src="{{url_for('static', filename = 'javascript/jquery.nicescroll.js')}}"></script>
+	<script src="{{url_for('static', filename = 'javascript/scripts.js')}}"></script>
+	<!--//scrolling js-->
+
+	<!-- Bootstrap Core JavaScript -->
+
+    <script src="{{url_for('static', filename = 'javascript/bootstrap.js')}}"> </script>
+
+	<!-- candlestick --><!-- for points and multiple y-axis charts js -->
+    <script src="{{url_for('static', filename = 'javascript/jquery.jqcandlestick.min.js')}}" ></script>
+<!--	<script type="text/javascript" src="javascript/jquery.jqcandlestick.min.js"></script>-->
+     <script src="{{url_for('static', filename = 'styles/jqcandlestick.css')}}"> </script>
+<!--     <link rel="stylesheet" type="text/css" href="styles/jqcandlestick.css" />-->
+	<link rel="stylesheet" type="text/css" src="{{url_for('static', filename = 'styles/jqcandlestick.css')}}">
+	<!-- //candlestick --><!-- //for points and multiple y-axis charts js -->
+
+	<!-- side nav js -->
+	<script src="{{url_for('static', filename = 'javascript/SidebarNav.min.js')}}" ></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
+
+</body>
+</html>

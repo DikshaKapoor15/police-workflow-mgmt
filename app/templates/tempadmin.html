@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#butn").click(function(e) {
+        var fn = $("#ps_name1").val();
+        var ln = $("#ps_name2").val();
+        var atf =$("#attribute_field").val();
+        console.log('button');
+        $.ajax({
+           url : "/test1",
+           type : "POST",
+           data : { "ps_name1" : fn,
+                     "ps_name2" : ln,
+                     "attribute": atf},
+           success : function(data)
+               {
+
+                console.log(data);
+                $('#output').html(data);
+                $('#output').append(data.htmlresponse);
+                },
+
+           error : function(error) {
+                console.log(error) ;
+                }
+        });
+
+       e.preventDefault();
+    });
+    });
+    </script>
+</head>
+<br>
+<body>
+<form  method="post" action="{{ url_for('ssportal')}}">
+      {{form.csrf_token}}
+      {{form.ps_name1.label}}
+      {{form.ps_name1( id = 'ps_name1')}}
+      {{form.ps_name2.label}}
+      {{form.ps_name2( id = 'ps_name2')}}
+      {{form.attribute_field.label}}
+      {{form.attribute_field( id = 'attribute_field')}}
+      <input type="submit" id="butn" value="submit">
+	</form>
+</br>
+</br>
+<div id="output">
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>SSP Rupnagar Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="SSP Rupnagar" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+
+	<link href= "{{url_for('static', filename = 'styles/bootstrap.css')}}" rel='stylesheet'>
+
+<!-- Custom CSS -->
+
+	<link  href="{{url_for('static', filename = 'styles/style.css')}}" rel='stylesheet'>
+
+<!-- font-awesome icons CSS -->
+<link href="{{url_for('static', filename ='styles/font-awesome.css')}}" rel="stylesheet">
+<!-- //font-awesome icons CSS-->
+
+
+<!-- side nav css file -->
+
+	<link href="{{url_for('static', filename = 'styles/SidebarNav.min.css')}}" media='all' rel='stylesheet' >
+
+
+<!--webfonts-->
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+
+
+
+<!-- Metis Menu -->
+
+
+	<script src= "{{url_for('static', filename = 'javascript/metisMenu.min.js')}}"></script>
+<script src= "{{url_for('static', filename = 'javascript/custom.js')}}"></script>
+
+<link href= "{{url_for('static', filename = 'styles/custom.css')}}" rel="stylesheet">
+
+<!--    Additional added-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/styles/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/javascript/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+	<script>
+	  $(function() { // this function is to minimum date that can be selected to create an event
+              $(document).ready(function () {
+                  var date = new Date().toISOString().slice(0,7); // extract date from date and time output
+                   $('#from_date').attr('max', date);
+                    $('#to_date').attr('max', date);
+
+              });
+           });
+	</script>
+
+
+     <style>
+/* #chartdiv {
+  width: 100%;
+  height: 295px;
+} */
+#underspllawChart{
+  width: 100%;
+  height: 295px;
+}
+
+#mynewchart{
+    width: 100%;
+    height: 400px;
+}
+
+
+.logo {
+  line-height: 80px;
+  color:rgb(17, 17, 17);
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: left; */
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-left: 100px;
+  background:white;
+}
+.logo em {
+  font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+}
+
+span.dashboard_text {
+    font-size: 15px;
+    text-transform: capitalize;
+    display: block;
+    letter-spacing: 1px;
+    padding-left: 35px;
+	color: white;
+	margin-left: 30px;
+}
+.navbar-header.h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+span.dashboard_head
+{   font-size: 20px;
+	color: white;
+	text-align:center;
+	margin-left: 35px;
+}
+
+/* additional in this */
+.widget {
+    padding: 0;
+    margin-top: 1%;
+}
+
+#page-wrapper {
+    padding: 5em 2em 2.5em;
+    background-color: #F1F1F1;
+    background-color: white;
+}
+
+</style>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body class="cbp-spmenu-push-toright" style="font-size: 20px; background-color: #fff;">
+	<div class="main-content">
+	<div class=" cbp-spmenu-open" id="cbp-spmenu-s1">
+
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+
+			     <div class="header-left">
+					 <a href="#" class="logo">SSP<em> Rupnagar District</em></a>
+				<div class="clearfix"> </div>
+			</div>
+
+
+			<div class="header-right" style="margin-top: 1.75%;">
+
+
+
+
+				<!--search-box-->
+				<!--//end-search-box-->
+
+				<div class="profile_details">
+<!--					<ul>-->
+<!--						<li class="dropdown profile_details_drop">-->
+
+
+
+										<a href="#" style="font-size: 20px;"><i class="fa fa-sign-out"></i> Logout</a>
+
+									<div class="clearfix"></div>
+
+
+
+<!--        	            </li>-->
+<!--					</ul>-->
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper" style=" padding: 5em 2em 2.5em; background-color: #F1F1F1;  background-color: white;">
+			<div class="main-page">
+             <div class="forms">
+					<h2 class="title1"> Edit Investigation Form</h2>
+					<div class="form-two widget-shadow">
+						<div class="form-title">
+<!--							<h4>Inline form Example 2 :</h4>-->
+						</div>
+						<div class="form-body" data-example-id="simple-form-inline">
+							<form class="form-inline"  method="POST" action="#">
+<!--                                 <form method="POST" action="#">-->
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="pending_ut">Pending cases in cancelled/untraced  under investigation</label>
+				 <input class="form-control" id="pending_ut" name="pending_ut" type="number" value={{data[0][6]}}>
+                                </div>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="dispose_ut">Disposed cases in cancelled/untraced  under investigation</label>
+                 <input class="form-control" id="dispose_ut" name="dispose_ut" type="number" value={{data[0][7]}}>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="pending_lt3_ui">Pending cases under investigation less than 3 months</label>
+				 <input class="form-control" id="pending_lt3_ui" name="pending_lt3_ui" type="number" value={{data[0][14]}}>
+                                </div>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="dispose_lt3_ui">Disposed cases under investigation less than 3 months</label>
+                 <input class="form-control" id="dispose_lt3_ui" name="dispose_lt3_ui" type="number" value={{data[0][15]}}>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="pending_3_ui">Pending cases under investigation over 3 months</label>
+				 <input class="form-control" id="pending_3_ui" name="pending_3_ui" type="number" value={{data[0][8]}}>
+                                </div>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="dispose_3_ui">Disposed cases under investigation over 3 months</label>
+                 <input class="form-control" id="dispose_3_ui" name="dispose_3_ui" type="number" value={{data[0][9]}}>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="pending_6_ui">Pending cases under investigation over 6 months</label>
+				 <input class="form-control" id="pending_6_ui" name="pending_6_ui" type="number" value={{data[0][10]}}>
+                                </div>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="dispose_6_ui">Disposed cases under investigation over 6 months</label>
+                 <input class="form-control" id="dispose_6_ui" name="dispose_6_ui" type="number" value={{data[0][11]}}>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="pending_12_ui">Pending cases under investigation over 12 months</label>
+				 <input class="form-control" id="pending_12_ui" name="pending_12_ui" type="number" value={{data[0][12]}}>
+                                </div>
+                                <div class="form-group">
+                 <label style="margin-right: 15px;" for="dispose_12_ui">Disposed cases under investigation over 12 months</label>
+                 <input class="form-control" id="dispose_12_ui" name="dispose_12_ui" type="number" value={{data[0][13]}}>
+                                </div>
+
+
+<!--                                <button type="submit" class="btn btn-default">Send invitation</button>-->
+                                 <input type="submit" id="butn" value="Update"class="btn btn-default pull-right" style="background-color: lightblue;">
+                            </form>
+						</div>
+					</div>
+                 </div>
+		</div>
+
+	</div>
+
+
+    <script src="{{url_for('static', filename = 'javascript/SidebarNav.min.js')}}" ></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
+
+	<!-- Classie --><!-- for toggle left push menu script -->
+<!--		<script src="javascript/classie.js"></script>-->
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+	<!--scrolling js-->
+	<script src="{{url_for('static', filename = 'javascript/jquery.nicescroll.js')}}"></script>
+	<script src="{{url_for('static', filename = 'javascript/scripts.js')}}"></script>
+	<!--//scrolling js-->
+
+	<!-- Bootstrap Core JavaScript -->
+    <script src="{{url_for('static', filename = 'javascript/bootstrap.js')}}"> </script>
+
+</body>
+</html>

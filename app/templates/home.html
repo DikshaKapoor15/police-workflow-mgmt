@@ -1,0 +1,963 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="SSP Rupnagar" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<!--<link href="styles/bootstrap.css" rel='stylesheet'>-->
+	<link href= "{{url_for('static', filename = 'styles/bootstrap.css')}}" rel='stylesheet'>
+
+<!-- Custom CSS -->
+<!--<link href="styles/style.css" rel='stylesheet' >-->
+	<link  href="{{url_for('static', filename = 'styles/style.css')}}" rel='stylesheet'>
+
+<!-- font-awesome icons CSS -->
+<link href="{{url_for('static', filename ='styles/font-awesome.css')}}" rel="stylesheet">
+<!-- //font-awesome icons CSS-->
+
+<!-- side nav css file -->
+<!--<link href='styles/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>-->
+	<link href="{{url_for('static', filename = 'styles/SidebarNav.min.css')}}" media='all' rel='stylesheet' >
+<!-- //side nav css file -->
+
+ <!-- js-->
+<!--<script src="javascript/jquery-1.11.1.min.js"></script>-->
+<!--<script src="javascript/modernizr.custom.js"></script>-->
+
+	<script src= "{{url_for('static', filename = 'javascript/jquery-1.11.1.min.js')}}"></script>
+<script src= "{{url_for('static', filename = 'javascript/modernizr.custom.js')}}" ></script>
+
+<!--webfonts-->
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+
+<!-- chart -->
+<!--<script src="javascript/Chart.js"></script>-->
+	<script src= "{{url_for('static', filename = 'javascript/Chart.js')}}" ></script>
+<!-- //chart -->
+
+<!-- Metis Menu -->
+<!--<script src="javascript/metisMenu.min.js"></script>-->
+<!--<script src="javascript/custom.js"></script>-->
+<!--<link href="styles/custom.css" rel="stylesheet">-->
+
+	<script src= "{{url_for('static', filename = 'javascript/metisMenu.min.js')}}"></script>
+<script src= "{{url_for('static', filename = 'javascript/custom.js')}}"></script>
+
+<link href= "{{url_for('static', filename = 'styles/custom.css')}}" rel="stylesheet">
+<!--//Metis Menu -->
+<style>
+/* #chartdiv {
+  width: 100%;
+  height: 295px;
+} */
+
+
+.logo {
+  line-height: 80px;
+  color:rgb(17, 17, 17);
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: left; */
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-left: 100px;
+  background:white;
+}
+.logo em {
+  font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+}
+
+span.dashboard_text {
+    font-size: 15px;
+    text-transform: capitalize;
+    display: block;
+    letter-spacing: 1px;
+    padding-left: 35px;
+	color: white;
+	margin-left: 30px;
+}
+.navbar-header.h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+span.dashboard_head
+{   font-size: 20px;
+	color: white;
+	text-align:center;
+	margin-left: 35px;
+}
+
+/* additional in this */
+.widget {
+    padding: 0;
+    margin-top: 1%;
+}
+</head>
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+			<h1><img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;">
+				<span class="dashboard_head" >Punjab </span>  <span class="dashboard_text">Police dashboard</span></a></h1>
+
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="sidebar-menu">
+              <li class="header">MAIN NAVIGATION</li>
+              <li class="treeview">
+                <a href="{{url_for('home')}}">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+              </li>
+			  <!-- <li class="treeview">
+                <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>Components</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="grids.html"><i class="fa fa-angle-right"></i> Grids</a></li>
+                  <li><a href="media.html"><i class="fa fa-angle-right"></i> Media Css</a></li>
+                </ul>
+              </li>
+              <li class="treeview">
+                <a href="charts.html">
+                <i class="fa fa-pie-chart"></i>
+                <span>Charts</span>
+                <span class="label label-primary pull-right">new</span>
+                </a>
+              </li>
+              <li class="treeview">
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-laptop"></i>
+                <span>UI Elements</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="general.html"><i class="fa fa-angle-right"></i> General</a></li>
+                  <li><a href="icons.html"><i class="fa fa-angle-right"></i> Icons</a></li>
+                  <li><a href="buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
+                  <li><a href="typography.html"><i class="fa fa-angle-right"></i> Typography</a></li>
+                </ul>
+              </li>
+			  <li>
+                <a href="widgets.html">
+                <i class="fa fa-th"></i> <span>Widgets</span>
+                <small class="label pull-right label-info">08</small>
+                </a>
+              </li> -->
+              <li class="treeview">
+				<li class="treeview">
+					<a href="#">
+					<i class="fa fa-edit"></i> <span>Forms</span>
+					<i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu">
+					  <li><a href="{{url_for('challan')}}"><i class="fa fa-angle-right"></i> Challan Form</a></li>
+					  <li><a href="{{url_for('recovery')}}"><i class="fa fa-angle-right"></i> Recovery Form</a></li>
+					  <li><a href="{{url_for('investigations')}}"><i class="fa fa-angle-right"></i> Investigation Form</a></li>
+
+					</ul>
+				  </li>
+              <li class="treeview">
+                <a href="#">
+                <i class="fa fa-table"></i> <span>Upload Data</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{url_for('uploading')}}"><i class="fa fa-angle-right"></i> Excel </a></li>
+                </ul>
+              </li>
+              <!-- <li class="treeview">
+                <a href="#">
+                <i class="fa fa-envelope"></i> <span>Mailbox </span>
+                <i class="fa fa-angle-left pull-right"></i><small class="label pull-right label-info1">08</small><span class="label label-primary1 pull-right">02</span></a>
+                <ul class="treeview-menu">
+                  <li><a href="inbox.html"><i class="fa fa-angle-right"></i> Mail Inbox </a></li>
+                  <li><a href="compose.html"><i class="fa fa-angle-right"></i> Compose Mail </a></li>
+                </ul>
+              </li> -->
+              <!-- <li class="treeview">
+                <a href="#">
+                <i class="fa fa-folder"></i> <span>Examples</span>
+                <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="login.html"><i class="fa fa-angle-right"></i> Login</a></li>
+                  <li><a href="signup.html"><i class="fa fa-angle-right"></i> Register</a></li>
+                  <li><a href="404.html"><i class="fa fa-angle-right"></i> 404 Error</a></li>
+                  <li><a href="500.html"><i class="fa fa-angle-right"></i> 500 Error</a></li>
+                  <li><a href="blank-page.html"><i class="fa fa-angle-right"></i> Blank Page</a></li>
+                </ul> -->
+              <!-- </li> -->
+              <!-- <li class="header">LABELS</li>
+              <li><a href="#"><i class="fa fa-angle-right text-red"></i> <span>Important</span></a></li>
+              <li><a href="#"><i class="fa fa-angle-right text-yellow"></i> <span>Warning</span></a></li>
+              <li><a href="#"><i class="fa fa-angle-right text-aqua"></i> <span>Information</span></a></li>-->
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+				<!-- <div class="profile_details_left"--><!--notifications of menu start -->
+				<!----<ul class="nofitications-dropdown">
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">4</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 3 new messages</h3>
+									</div>
+								</li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/1.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet</p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li class="odd"><a href="#">
+									<div class="user_img"><img src="images/4.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								  <div class="clearfix"></div>
+								</a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/3.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/2.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								<li>
+									<div class="notification_bottom">
+										<a href="#">See all messages</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 3 new notification</h3>
+									</div>
+								</li>
+								<li><a href="#">
+									<div class="user_img"><img src="images/4.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet</p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								  <div class="clearfix"></div>
+								 </a></li>
+								 <li class="odd"><a href="#">
+									<div class="user_img"><img src="images/1.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								 </a></li>
+								 <li><a href="#">
+									<div class="user_img"><img src="images/3.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								 </a></li>
+								<li><a href="#">
+								   <div class="user_img"><img src="images/2.jpg" alt=""></div>
+								   <div class="notification_desc">
+									<p>Lorem ipsum dolor amet </p>
+									<p><span>1 hour ago</span></p>
+									</div>
+								   <div class="clearfix"></div>
+								</a></li>
+								 <li>
+									<div class="notification_bottom">
+										<a href="#">See all notifications</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown head-dpdn">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="notification_header">
+										<h3>You have 8 pending task</h3>
+									</div>
+								</li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Database update</span><span class="percentage">40%</span>
+										<div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										<div class="bar yellow" style="width:40%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
+									   <div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										 <div class="bar green" style="width:90%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
+										<div class="clearfix"></div>
+									</div>
+								   <div class="progress progress-striped active">
+										 <div class="bar red" style="width: 33%;"></div>
+									</div>
+								</a></li>
+								<li><a href="#">
+									<div class="task-info">
+										<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
+									   <div class="clearfix"></div>
+									</div>
+									<div class="progress progress-striped active">
+										 <div class="bar  blue" style="width: 80%;"></div>
+									</div>
+								</a></li>
+								<li>
+									<div class="notification_bottom">
+										<a href="#">See all pending tasks</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div> -->
+				<!--notification menu end -->
+				<!-- <div class="clearfix"> </div> -->
+				<a href="index.html" class="logo">POLICE STATION <em>  PORTAL</em></a>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right">
+
+
+
+				<!--search-box-->
+				<!--//end-search-box-->
+
+				<div class="profile_details">
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" aria-expanded="false">
+								<div class="profile_img">
+									<!-- <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>  -->
+									<div class="user-name">
+										<a href="{{url_for('logout')}}" style="font-size: 20px;"><i class="fa fa-sign-out"></i> Logout</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+									</div>
+									<!-- <i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i> -->
+									<div class="clearfix"></div>
+								</div>
+							</a>
+							<!-- <ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul> -->
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //header-ends -->
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+
+				<h2 class="title1">Charts</h2>
+<!--            Top graphs -->
+
+
+<!--					<div class="clearfix"> </div>-->
+<!--				</div>-->
+
+	<!-- for amcharts js -->
+			 <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+	<!-- for amcharts js -->
+    <script src= "{{url_for('static', filename = 'javascript/index2.js')}}" ></script>
+
+<!--Top left graph-->
+<!--            <div class="charts">-->
+			<div class="charts">
+
+                 <div class="col-md-6 charts-grids w3ls-high">
+					<h4 class="title">Graph 1</h4>
+					<div id="chartdivF1"></div>
+                      <canvas id="myChart"  style="background-color: rgba(255,255,255,1);"></canvas>
+
+
+<!--                      <canvas id="myChart"  style="background-color: rgba(255,255,255,1);"></canvas>-->
+                        <script >
+                              Chart.defaults.global.responsive = true;
+                              var ctx=document.getElementById("myChart").getContext("2d");
+
+                              var barChart =new Chart(ctx, {
+                                type : "bar" ,
+                                title:{
+                                text: "TOTAL CHALLANS OVER SIX MONTHS"
+                                },
+
+                                data : {
+                                   labels : {{ sixdatesb | safe }},
+                                   datasets : [
+                                    {
+                                       label : "no. of challans within a ps w.r.t months ",
+                                       data  : {{valueChallanMonth| safe}},
+                                       backgroundColor : {{colors|safe}}
+                                    }
+                                   ]
+                                },
+                          options : {
+                                  responsive :true,
+                                    title: {
+                                        display: true,
+                                        text: 'TOTAL CHALLANS IN A MONTH'
+
+                                    }
+
+                                }
+                              });
+
+                         </script>
+
+                 </div>
+<!--					</div>-->
+<!--            </div>-->
+<!--                Top right graph-->
+<!--					<div class="col-md-6 agileits-high charts-grids">-->
+<!--						<div class="hightchat-grid1">-->
+<!--							<h4 class="title">Multiple y-axis</h4>-->
+<!--							<div id="example-6"></div>-->
+            <div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>Graph 2</h3>
+                                </div>
+                                <canvas id="mynewChart"  style="background-color: rgba(255,255,255,1);"></canvas>
+    <script>
+            Chart.defaults.global.responsive = true;
+          var ctxy=document.getElementById("mynewChart").getContext("2d");
+
+          var pieChart =new Chart(ctxy, {
+            type : "pie" ,
+
+            data : {
+               labels : {{ labels1 | safe }},
+               datasets : [
+                {
+                   data  : {{ valueChallanAttr| safe}},
+                   backgroundColor : {{ colors | safe}}
+                }
+                ],
+            },
+      options : {
+              responsive :true
+            },
+            options : {
+              responsive :true,
+                title: {
+                    display: true,
+                    text: 'DIVISION WISE # CHALLANS OVER 6 MONTHS'
+
+                }
+
+            }
+          });
+
+     </script>
+
+<!--                            <canvas id="Chart2" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--                    <script>-->
+<!--                     Chart.defaults.global.responsive = true;-->
+<!--                     var ctx=document.getElementById("Chart2").getContext("2d");-->
+
+<!--                              var lineChart =new Chart( ctx, {-->
+<!--                                type : "doughnut" ,-->
+
+<!--                                data : {-->
+<!--                                   labels : {{ labels | safe }},-->
+<!--                                   datasets : [-->
+<!--                                    {-->
+<!--                                       data  : {{ data_cleanliness | safe}},-->
+<!--                                        backgroundColor : [-->
+<!--                                                                "rgba(237, 127, 104, 1)",-->
+<!--                                                                    "rgba(237, 169, 104, 1)",-->
+<!--                                                                    "rgba(244, 220, 103, 1)",-->
+<!--                                                                    "rgba(185, 244, 103, 1)",-->
+<!--                                                                    "rgba(113, 244, 103, 1)",-->
+<!--                                                                    "rgba(103, 244, 171, 1)",-->
+<!--                                                                    "rgba(103, 244, 232, 1)",-->
+<!--                                                                    "rgba(103, 134, 244, 1)",-->
+<!--                                                                    "rgba(178, 103, 244, 1)",-->
+<!--                                                                    "rgba(244, 103, 223, 1)"-->
+<!--                                                                                                         ]-->
+<!--                                    }-->
+<!--                                   ]-->
+<!--                                },-->
+<!--                          options : {-->
+<!--                                  responsive : true,-->
+<!--                                    title: {-->
+<!--                                        display: true,-->
+<!--                                        text: 'Cleanliness'-->
+<!--                                    }-->
+<!--                                }-->
+<!--                              });-->
+
+<!--                         </script>-->
+						</div>
+					</div>
+					<div class="clearfix"></div>
+			</div>
+<!--            </div>-->
+
+
+
+
+<!--Middle graphs-->
+            <!-- for amcharts js -->
+            <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+
+			<!-- for amcharts js -->
+<!--middle left graph-->
+			<div class="charts">
+				<div class="col-md-6 charts-grids w3ls-high">
+					<h4 class="title">Graph 3</h4>
+                      <canvas id="marksChart"  style="background-color: rgba(255,255,255,1);"></canvas>
+    <script>
+           Chart.defaults.global.responsive = true;
+          var ctxyz=document.getElementById("marksChart").getContext("2d");
+
+          var lineChart =new Chart( ctxyz, {
+            type : "line" ,
+
+            data : {
+               labels : {{ sixdatesb | safe }},
+               datasets : [
+                {
+                   label : "progress",
+                   data  : {{ final_score| safe}},
+                   fill : true,
+                   borderColor : "green",
+                   lineTension : 0.1,
+                   backgroundColor : 'rgba(0, 0.7, 0, 0.05)'
+
+                },
+               ]
+            },
+      options : {
+              responsive :false
+            },
+            options : {
+              responsive :true,
+                title: {
+                    display: true,
+                    text: 'PROGRESS OF MARKS'
+
+                }
+
+            }
+
+          });
+
+
+     </script>
+
+<!--                    <canvas id="Chart3" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--                <script>-->
+<!--                Chart.defaults.global.responsive = true;-->
+<!--                var ctx=document.getElementById("Chart3").getContext("2d");-->
+
+<!--                          var lineChart =new Chart( ctx, {-->
+<!--                            type : "doughnut" ,-->
+
+<!--                            data : {-->
+<!--                               labels : {{ labels | safe }},-->
+<!--                               datasets : [-->
+<!--                                {-->
+<!--                                   data  : {{ data_handling_law | safe}},-->
+<!--                                    backgroundColor : [-->
+<!--                                                           "rgba(237, 127, 104, 1)",-->
+<!--                                                            "rgba(237, 169, 104, 1)",-->
+<!--                                                            "rgba(244, 220, 103, 1)",-->
+<!--                                                            "rgba(185, 244, 103, 1)",-->
+<!--                                                            "rgba(113, 244, 103, 1)",-->
+<!--                                                            "rgba(103, 244, 171, 1)",-->
+<!--                                                            "rgba(103, 244, 232, 1)",-->
+<!--                                                            "rgba(103, 134, 244, 1)",-->
+<!--                                                            "rgba(178, 103, 244, 1)",-->
+<!--                                                            "rgba(244, 103, 223, 1)"-->
+<!--                                                                                                 ]-->
+<!--                                }-->
+<!--                               ]-->
+<!--                            },-->
+<!--                      options : {-->
+<!--                              responsive : true,-->
+<!--                                title: {-->
+<!--                                    display: true,-->
+<!--                                    text: 'Handling of Law'-->
+
+<!--                                }-->
+
+<!--                            }-->
+<!--                          });-->
+
+
+<!--                </script>-->
+				</div>
+<!--                middle right-->
+				<div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>Graph 4</h3>
+                                </div>
+                                <canvas id="underipcChart"  style="background-color: rgba(255,255,255,1);"></canvas>
+
+<!--              <canvas id="myG2Chart" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+
+
+<!--                <script>-->
+<!--                      Chart.defaults.global.responsive = true;-->
+<!--                      var ctx=document.getElementById("myG2Chart").getContext("2d");-->
+
+<!--                      var newbar =new Chart( ctx, {-->
+<!--                        type: 'bar',-->
+<!--                        data : {-->
+<!--                            labels: {{labelsG2 | safe}},-->
+<!--                           datasets : [-->
+<!--                            {-->
+<!--                                label : 'ndps',-->
+<!--                                data  : {{ valuesG2_1 | safe}},-->
+<!--                                backgroundColor : 'green'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'commercial_recovery',-->
+<!--                                data  : {{ valuesG2_2 | safe}},-->
+<!--                                backgroundColor : 'blue'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'arm_act',-->
+<!--                                data  : {{ valuesG2_3 | safe}},-->
+<!--                                backgroundColor : 'yellow'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'excise_act',-->
+<!--                                data  : {{ valuesG2_4 | safe}},-->
+<!--                                backgroundColor : 'pink'-->
+<!--                            },-->
+<!--                            {-->
+<!--                                 label : 'gambling_act',-->
+<!--                                data  : {{ valuesG2_5 | safe}},-->
+<!--                                backgroundColor : 'grey'-->
+<!--                            }-->
+<!--                           ]-->
+<!--                        },-->
+<!--                        options:{-->
+<!--                        scales: {-->
+<!--                        xAxes: [{-->
+<!--                            stacked: true-->
+<!--                            }],-->
+<!--                        yAxes: [{-->
+<!--                            stacked: true-->
+<!--                        }]-->
+<!--                            }-->
+<!--                        }-->
+<!--                      });-->
+
+<!--                 </script>-->
+<!--                    <canvas id="Chart2" style=" background-color: rgba(255,255,255,1); "></canvas>-->
+<!--            <script>-->
+<!--             Chart.defaults.global.responsive = true;-->
+<!--             var ctx=document.getElementById("Chart2").getContext("2d");-->
+
+<!--                      var lineChart =new Chart( ctx, {-->
+<!--                        type : "doughnut" ,-->
+
+<!--                        data : {-->
+<!--                           labels : {{ labels | safe }},-->
+<!--                           datasets : [-->
+<!--                            {-->
+<!--                               data  : {{ data_cleanliness | safe}},-->
+<!--                                backgroundColor : [-->
+<!--                                                        "rgba(237, 127, 104, 1)",-->
+<!--                                                            "rgba(237, 169, 104, 1)",-->
+<!--                                                            "rgba(244, 220, 103, 1)",-->
+<!--                                                            "rgba(185, 244, 103, 1)",-->
+<!--                                                            "rgba(113, 244, 103, 1)",-->
+<!--                                                            "rgba(103, 244, 171, 1)",-->
+<!--                                                            "rgba(103, 244, 232, 1)",-->
+<!--                                                            "rgba(103, 134, 244, 1)",-->
+<!--                                                            "rgba(178, 103, 244, 1)",-->
+<!--                                                            "rgba(244, 103, 223, 1)"-->
+<!--                                                                                                 ]-->
+<!--                            }-->
+<!--                           ]-->
+<!--                        },-->
+<!--                  options : {-->
+<!--                          responsive : true,-->
+<!--                            title: {-->
+<!--                                display: true,-->
+<!--                                text: 'Cleanliness'-->
+<!--                            }-->
+<!--                        }-->
+<!--                      });-->
+
+<!--                 </script>-->
+
+
+<!--                    <canvas id="underipcChart" style=" background-color: rgba(255,255,255,1);"></canvas>-->
+    <script>
+          Chart.defaults.global.responsive = true;
+          var ctx=document.getElementById("underipcChart").getContext("2d");
+
+          var newbar =new Chart( ctx, {
+            type: 'bar',
+            data : {
+                labels: {{labels3 | safe}},
+               datasets : [
+                {
+                    label : 'pending',
+                    data  : {{ values3 | safe}},
+                    backgroundColor : 'rgba(9, 220, 150, 1)'
+                },
+                {
+                     label : 'disposed',
+                    data  : {{ values4 | safe}},
+                    backgroundColor : 'rgba(9, 171, 220, 1)'
+                }
+               ]
+            },
+            options : {
+              responsive :true,
+                title: {
+                    display: true,
+                    text: 'UNDER INVESTIGATION CASES UNDER IPC   in   ' + {{sixdatesb[-1]|tojson}}
+
+                }
+
+            }
+          });
+
+     </script>
+
+				</div>
+			</div>
+                <div class="clearfix"></div>
+		 </div>
+
+
+<!--			</div>-->
+<!--				<script  src="javascript/index.js"></script>-->
+            <script src="{{url_for('static', filename = 'javascript/index.js')}}"></script>
+
+<!--			</div>-->
+
+<!--		</div>-->
+
+
+
+<!--    bottom down graphs-->
+
+    <!-- for amcharts js -->
+            <script src= "{{url_for('static', filename = 'javascript/amcharts.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/serial.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/export.min.js')}}" ></script>
+            <script src= "{{url_for('static', filename = 'javascript/light.js')}}" ></script>
+            <link href="{{url_for('static', filename = 'styles/export.css')}}" media="all" rel='stylesheet' >
+
+
+<!--            bottom left-->
+
+			<div class="charts">
+
+                 <div class="col-md-6 charts-grids w3ls-high" style="width: 100%;">
+					<h4 class="title">Graph 5</h4>
+
+<!--					<div class="col-md-4 charts-grids widget">-->
+<!--						<div class="card-header">-->
+<!--							<h3>Graph 5</h3>-->
+<!--						</div>-->
+<!--					<div id="container1"></div>-->
+
+                          <canvas id="underspllawChart1" style="background-color: rgba(255,255,255,1);"></canvas>
+    <script>
+          Chart.defaults.global.responsive = true;
+          var ctx=document.getElementById("underspllawChart1").getContext("2d");
+
+          var newbar =new Chart( ctx, {
+            type: 'bar',
+
+            data : {
+                labels: {{labels3 | safe}},
+               datasets : [
+                {
+                    label : 'pending',
+                    data  : {{ values5 | safe}},
+                    backgroundColor : 'rgba(9, 220, 150, 1)'
+                },
+                {
+                     label : 'disposed',
+                    data  : {{ values6 | safe}},
+                    backgroundColor : 'rgba(9, 171, 220, 1)'
+                }
+               ]
+            },
+            options : {
+            	aspectRatio: 3.5,
+              responsive :true,
+                title: {
+                    display: true,
+                    text: 'UNDER INVESTIGATION CASES UNDER LOCAL & SPECIAL LAW    in   ' + {{sixdatesb[-1]|tojson}}
+
+                }
+
+            }
+          });
+
+     </script>
+				</div>
+<!--                bottom right-->
+
+                <div class="clearfix"></div>  <!--extra added-->
+		</div>
+
+<!--				<div class="clearfix"></div>-->
+<!--			</div>-->
+<!--				<script  src="javascript/index.js"></script>-->
+            <script src="{{url_for('static', filename = 'javascript/index.js')}}"></script>
+
+<!--			</div>-->
+
+<!--		</div>-->
+
+
+
+
+            </div>
+
+		</div>
+
+    <script src="{{url_for('static', filename = 'javascript/Chart.bundle.js')}}"></script>
+    <script src="{{url_for('static', filename = 'javascript/utils.js')}}"></script>
+
+
+
+	<!-- Classie --><!-- for toggle left push menu script -->
+		<script src="{{url_for('static', filename = 'javascript/classie.js')}}"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+	<!--scrolling js-->
+	<script src="{{url_for('static', filename = 'javascript/jquery.nicescroll.js')}}"></script>
+	<script src="{{url_for('static', filename = 'javascript/scripts.js')}}"></script>
+	<!--//scrolling js-->
+
+	<!-- Bootstrap Core JavaScript -->
+
+    <script src="{{url_for('static', filename = 'javascript/bootstrap.js')}}"> </script>
+
+	<!-- candlestick --><!-- for points and multiple y-axis charts js -->
+    <script src="{{url_for('static', filename = 'javascript/jquery.jqcandlestick.min.js')}}" ></script>
+<!--	<script type="text/javascript" src="javascript/jquery.jqcandlestick.min.js"></script>-->
+     <script src="{{url_for('static', filename = 'styles/jqcandlestick.css')}}"> </script>
+<!--     <link rel="stylesheet" type="text/css" href="styles/jqcandlestick.css" />-->
+	<link rel="stylesheet" type="text/css" src="{{url_for('static', filename = 'styles/jqcandlestick.css')}}">
+	<!-- //candlestick --><!-- //for points and multiple y-axis charts js -->
+
+	<!-- side nav js -->
+	<script src="{{url_for('static', filename = 'javascript/SidebarNav.min.js')}}" ></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
+
+</body>

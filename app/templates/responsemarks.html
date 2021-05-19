@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+</head>
+<body>
+
+ <div class="charts">
+    <div class="col-md-6 charts-grids w3ls-high">
+    <h4 class="title">ATTRIBUTES UNDER DETECTION WORK</h4>
+        <div id="chartdivtop1"></div>
+    <canvas id = "graph" style="background-color: rgb(255, 255, 255); "></canvas>
+<script>
+    var can = $('#graph').get(0).getContext('2d');
+      var config =  {
+            type : "doughnut" ,
+
+            data : {
+               labels :  {{ labels1|tojson }},
+               datasets : [
+                {
+                   label : {{x|tojson}},
+                   data  : {{data_d1}} ,
+                   backgroundColor: [
+                                         "rgba(233, 247, 85, 1)" ,
+                                        "rgba(70, 246, 108, 1",
+                                        "rgba(94, 247, 224, 1)",
+                                        "rgba(94, 135, 247, 1)",
+                                        "rgba(249, 119, 123, 1)"
+                               ]
+                },
+                {
+                   label : {{y|tojson}},
+                   data  :{{data_d2}},
+                   backgroundColor: [
+                                         "rgba(233, 247, 85, 1)" ,
+                                        "rgba(70, 246, 108, 1",
+                                        "rgba(94, 247, 224, 1)",
+                                        "rgba(94, 135, 247, 1)",
+                                        "rgba(249, 119, 123, 1)"
+                                    ]
+
+                }
+                                           ]
+                 },
+                                  options : {
+                                          responsive :true,
+                                          legend: { display: true },
+                                            title: {
+                                              display: true
+                                                   }
+
+                                             }
+                                      };
+
+
+             var bar = new Chart(can,config);
+
+</script>
+    </div>
+
+    <div class="col-md-6 content-top-2 charts-grids w3ls-high card agileits-high">
+				<div class="agileinfo-cdr">
+								<div class="card-header">
+                                    <h3>PERCENTAGE OF CASES</h3>
+                                </div>
+        <canvas id = "graph2" style="background-color: rgb(255, 255, 255); "></canvas>
+<script>
+
+
+             var can2 = $('#graph2').get(0).getContext('2d');
+             var config2 = {
+                            type : 'horizontalBar',
+
+                            data : {
+                               labels : {{ labels3|tojson }} ,
+                               datasets : [
+                                {
+                                   label : {{x|tojson}},
+                                   data  : {{data_r1}},
+                                    backgroundColor: [
+                                                         "rgba(70, 246, 108, 1)",
+                                                        "rgba(70, 246, 108, 1)",
+                                                        "rgba(70, 246, 108, 1)"
+
+                                               ]
+
+
+                                },
+                                {
+                                   label : {{y|tojson}} ,
+                                   data  :  {{data_r2}} ,
+                                   backgroundColor: [
+                                                         "rgba(94, 247, 224, 1)" ,
+                                                        "rgba(94, 247, 224, 1)",
+                                                        "rgba(94, 247, 224, 1)"
+                                                      ]
+
+                                }
+                               ]
+                            },
+                      options : {
+                              responsive :true,
+                              legend: { display: true },
+                                title: {
+                                  display: true
+                                }
+                             }
+                          };
+
+
+
+             var bar = new Chart(can2,config2);
+
+
+</script>
+    </div>
+    </div>
+        <div class="clearfix"></div>
+</div>
+                         <div style="margin-top: 10px;"></div>
+<div class="charts " >
+                    	<div class="col-md-6 charts-grids w3ls-high" style="width: 100%;">
+					<h4 class="title">NUMBER OF CASES</h4>
+					<div id="chartdiv"></div>
+
+    <canvas id = "graph1" style="background-color: rgb(255, 255, 255); "></canvas>
+<script>
+    var can1 = $('#graph1').get(0).getContext('2d');
+              var config1 =  {
+                    type : "bar" ,
+
+                    data : {
+                       labels :  {{ labels2|tojson }} ,
+                       datasets : [
+                        {
+                           label : {{x|tojson}},
+                           data  : {{data_b1}} ,
+                           backgroundColor: [
+                                                 "rgba(70, 246, 108, 1)",
+                                                "rgba(70, 246, 108, 1)",
+                                                "rgba(70, 246, 108, 1)",
+                                                "rgba(70, 246, 108, 1)"
+
+                                       ]
+                        },
+                        {
+                           label : {{y|tojson}},
+                           data  : {{data_b2}} ,
+                           backgroundColor: [
+                                                 "rgba(94, 247, 224, 1)" ,
+                                                "rgba(94, 247, 224, 1)",
+                                                "rgba(94, 247, 224, 1)",
+                                                "rgba(94, 247, 224, 1)"
+                                       ]
+
+                }
+               ]
+                            },
+                      options : {
+                              aspectRatio:4,
+                              responsive :true,
+                              legend: { display: true },
+                                title: {
+                                  display: true
+                                }
+                             }
+                          };
+
+
+
+             var bar = new Chart(can1,config1);
+
+</script>
+ </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>op</title>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+<body>
+           <canvas id="myChart" width="600" height="400"></canvas>
+    <script>
+          var ctx=document.getElementById("myChart").getContext("2d");
+
+          var lineChart =new Chart( ctx, {
+            type : "bar" ,
+
+            data : {
+               labels : {{ labels | safe }},
+               datasets : [
+                {
+                   label : 'user1',
+                   data  : {{ values | safe}},
+                   backgroundColor : 'blue'
+                },
+                {
+                   label : 'user2' ,
+                   data  : {{ values1 | safe}},
+                   backgroundColor :'red'
+
+                }
+               ]
+            },
+      options : {
+              responsive :false
+            }
+          });
+
+     </script>
+
+</body>
+</html>

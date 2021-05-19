@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <form class="form-inline" method="post">
+    <!--First Name-->
+<div class="form-group">
+<label class="sr-only" for="firstName">First Name</label>
+<input type="text" class="form-control" id="firstName" placeholder="First Name">
+</div>
+<!--Last Name-->
+<div class="form-group">
+<label class="sr-only" for="lastName">Last Name</label>
+<input type="text" class="form-control" id="lastName" placeholder="Last Name">
+</div>
+
+<!--Submit Button-->
+<button type="submit" id = "btn" class="btn btn-default">Submit</button>
+</form>
+</br>
+<div id="output">{{ output }}</div>
+</br>
+</body>
+
+<script>
+
+
+     $("#btn").click(function(e) {
+       var fn = $("#firstName").val();
+       var ln = $("#lastName").val();
+
+       console.log(fn + ln);
+       alert( fn +" " + ln );
+       $.ajax({
+           url : "/test",
+           type : "POST",
+           data : { "firstname" : fn,
+                     "lastname" : ln},
+           success : function(response)
+           {
+
+                console.log(response);
+
+
+                } ,
+
+           error : function(error)
+           { console.log(error) ; }
+       }).done(function(data){
+         $('#output').text(data.output).show();
+       });
+       e.preventDefault();
+   });
+
+
+</script>
+
+</html>

@@ -1,0 +1,751 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--  <head>-->
+
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <meta name="description" content="">-->
+<!--    <meta name="author" content="">-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">-->
+
+<!--    <title>Home Page</title>-->
+
+
+<!--    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/home-page.css')}}">-->
+<!--    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/sspcomp.css')}}">-->
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>-->
+<!--    <script>-->
+<!--    $(document).ready(function(){-->
+<!--        $("#butn").click(function(e) {-->
+<!--        var fn = $("#ps_name1").val();-->
+<!--        var ln = $("#ps_name2").val();-->
+<!--        var atf =$("#attribute_field").val();-->
+<!--        console.log('button');-->
+<!--        $.ajax({-->
+<!--           url : "/test1",-->
+<!--           type : "POST",-->
+<!--           data : { "ps_name1" : fn,-->
+<!--                     "ps_name2" : ln,-->
+<!--                     "attribute": atf},-->
+<!--           success : function(data)-->
+<!--               {-->
+
+<!--                console.log(data);-->
+<!--                $('#output').html(data);-->
+<!--                $('#output').append(data.htmlresponse);-->
+<!--                },-->
+
+<!--           error : function(error) {-->
+<!--                console.log(error) ;-->
+<!--                }-->
+<!--        });-->
+
+<!--       e.preventDefault();-->
+<!--    });-->
+<!--    });-->
+<!--    </script>-->
+
+<!--    </head>-->
+
+<!--    <body style="background: white;">-->
+
+
+<!--    &lt;!&ndash; * Header Area Start * &ndash;&gt;-->
+<!--    <header class="header-area header-sticky">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <nav class="main-nav" style="position:fixed; width:100%">-->
+<!--                        &lt;!&ndash; * Logo Start * &ndash;&gt;-->
+<!--                        <a href="" class="logo sspLogo">SSP Rupnagar District</a>-->
+<!--                        &lt;!&ndash; * Logo End * &ndash;&gt;-->
+<!--                        &lt;!&ndash; ** Menu Start ** &ndash;&gt;-->
+<!--                        <ul class="nav">-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('mark')}}" class="active">Home</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('marksform')}}">Fill Marks</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="{{url_for('ssportal')}}">Compare</a></li>-->
+
+<!--                            &lt;!&ndash; <li class="scroll-to-section"><a href="">Logout</a></li>  &ndash;&gt;-->
+<!--                            <li class="main-button"><a href="{{url_for('logout')}}">Logout</a></li>-->
+<!--                        </ul>-->
+<!--                        <a class='menu-trigger'>-->
+<!--                            <span>Menu</span>-->
+<!--                        </a> &ndash;&gt;-->
+<!--                        &lt;!&ndash; ** Menu End ** &ndash;&gt;                    </nav>-->
+<!--                    <form  method="post" action="{{ url_for('ssportal')}}">-->
+
+
+<!--                    <div class="sidenav">-->
+
+<!--                        <div class="side-menu-options">-->
+<!--                            <a href="" class="side-label ">Police Station 1</a>-->
+<!--                            <span class="custom-dropdown big">-->
+<!--                                {{form.csrf_token}}        {{form.ps_name1( id = 'ps_name1')}}-->
+
+<!--                            </span>-->
+
+<!--                            <div class="side-menu-options">-->
+<!--                            <a href="" class="side-label ">Police Station 2</a>-->
+<!--                            <span class="custom-dropdown big">-->
+<!--      {{form.ps_name2( id = 'ps_name2')}}-->
+
+<!--                            </span>-->
+<!--                            </div>-->
+
+<!--                            <div class="side-menu-options">-->
+<!--                                <a href="" class="side-label ">Graph Type</a>-->
+<!--                            <span class="custom-dropdown big">-->
+<!--      {{form.attribute_field( id = 'attribute_field')}}-->
+<!--                            </span>-->
+<!--                            </div>-->
+<!--                               <ul class="nav">-->
+<!--                                <input class="main-button " id="butn" type="submit">-->
+<!--                            </ul>-->
+
+<!--                        </div>-->
+
+<!--                        &lt;!&ndash; <a href="">Police Station 2</a> &ndash;&gt;-->
+<!--                        &lt;!&ndash; <a href="">Graph Type</a> &ndash;&gt;-->
+
+<!--                    </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </header>-->
+<!--    <div id="output">-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Glance Design Dashboard an Admin Panel Category Flat Bootstrap Responsive Website Template | Forms :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Bootstrap Core CSS -->
+<link href="{{url_for('static' , filename='styles/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="{{url_for('static' , filename='styles/style.css')}}" rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href="{{url_for('static' , filename='styles/font-awesome.css')}}" rel="stylesheet">
+<!-- //font-awesome icons CSS -->
+
+ <!-- side nav css file -->
+ <link href="{{url_for('static' , filename='styles/SidebarNav.min.css')}}" media='all' rel='stylesheet' type='text/css'/>
+ <!-- side nav css file -->
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+ <!-- js-->
+<script src="{{url_for('static' , filename='javascript/jquery-1.11.1.min.js')}}"></script>
+<script src="{{url_for('static' , filename='javascript/modernizr.custom.js')}}"></script>
+
+<!--webfonts-->
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+<!--//webfonts-->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$( "dtpick" ).datepicker({maxDate: 0, todayHighlight:true});
+	});
+	</script>
+<script>
+    $(document).ready(function(){
+        $("#butn").click(function(e) {
+        var fn = $("#ps_name1").val();
+        var ln = $("#ps_name2").val();
+        var atf =$("#attribute_field").val();
+        var date = $("#date").val();
+        console.log('button');
+        $.ajax({
+           url : "/test1",
+           type : "POST",
+           data : { "ps_name1" : fn,
+                     "ps_name2" : ln,
+                     "attribute": atf,
+                     "date": date},
+           success : function(data)
+               {
+
+                console.log(data);
+                $('#output').html(data);
+                $('#output').append(data.htmlresponse);
+                },
+
+           error : function(error) {
+                console.log(error) ;
+                }
+        });
+
+       e.preventDefault();
+    });
+    });
+    </script>
+<!-- Metis Menu -->
+<script src="{{url_for('static' , filename='javascript/metisMenu.min.js')}}"></script>
+<script src="{{url_for('static' , filename='javascript/custom.js')}}"></script>
+<link href="{{url_for('static' , filename='styles/custom.css')}}" rel="stylesheet">
+<!--//Metis Menu -->
+
+<!-- additional Styling -->
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+$coral: #eb9478;
+$maroon: #8e2807;
+$title: #493b76;
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    margin-top: 1%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    font-family: "Arimo";
+    background-color: #eb9478;
+    -webkit-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    box-shadow: 9px 13px 25px 0px rgba(0, 0, 0, 0.18);
+    animation: slideUp 2000ms ease;
+}
+
+@keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+
+    }
+}
+
+.container {
+    width: 80%;
+    padding: 5%;
+}
+
+.input {
+    margin-top: 1%;
+
+    width: 100%;
+    min-height: 40px;
+    border: 0;
+    font-size: 1rem;
+    letter-spacing: .10rem;
+    font-family: "Arimo";
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: #8e2807;
+    border-radius: 4px;
+}
+
+.dtpick {
+    margin-top: 1%;
+
+    width: 100%;
+    min-height: 40px;
+    border: 0;
+    font-size: 1rem;
+    letter-spacing: .10rem;
+    font-family: "Arimo";
+    margin-top: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: #8e2807;
+    border-radius: 4px;
+}
+
+.label {
+    text-transform: uppercase;
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: #8e2807;
+
+}
+
+label.label{
+    font-weight: 1000;
+}
+
+form {
+    width: 100%;
+
+    >* {
+        margin-top: 20px;
+    }
+}
+
+.name {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+
+    div {
+        width: 25%;
+    }
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+        margin: 3px 0;
+        left: 50%;
+        height: 40px;
+        width: 100px;
+        color: #cfc9e1;
+        background-color: #4a3b76;
+        text-transform: uppercase;
+        border: 0;
+        border-radius: .3rem;
+        letter-spacing: 2px;
+}
+
+button:hover {
+    animation-name: btn-hov;
+    animation-duration: 550ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn-hov {
+    100% {
+        background-color: #cfc9e1;
+        color: #4a3b76;
+        transform: scale(1.05)
+    }
+}
+
+
+
+
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 1000px) {
+    .wrapper {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .btns {
+        align-items: center;
+
+        button {
+            width: 50%;
+        }
+    }
+
+    .name {
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+
+        div {
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            display: flex;
+        }
+    }
+
+    .input {
+        margin: 5px 0;
+        min-height: 30px;
+    }
+}
+
+    @media (min-width: 768px)
+    {
+
+    .form-horizontal .control-label {
+        padding-top: 7px;
+        padding-left: 50px;
+        padding-left: 70px;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    }
+
+    .form-control1, .form-control_2.input-sm {
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    color: #616161;
+    margin-left: 40px;
+    background: #fff;
+    box-shadow: none !important;
+    width: 60%;
+    font-size: 0.85em;
+    font-weight: 300;
+    height: 40px;
+    border-radius: 0;
+    -webkit-appearance: none;
+    resize: none;
+    border-radius: 4px;
+    border-radius: 5px;
+}
+.forms label {
+    font-weight: 400;
+    font-size: large;
+}
+@media (min-width: 768px)
+{
+.col-sm-2 {
+   width: 30%;
+}
+}
+.form-group {
+    margin-bottom: 35px;
+}
+
+.logo {
+  line-height: 80px;
+  color:rgb(17, 17, 17);
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  /* float: left; */
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-left: 100px;
+  background:white;
+}
+.logo em {
+  font-style: normal;
+  color: #ed563b;
+  font-weight: 900;
+}
+
+span.dashboard_text {
+    font-size: 15px;
+    text-transform: capitalize;
+    display: block;
+    letter-spacing: 1px;
+    padding-left: 35px;
+	color: white;
+	margin-left: 30px;
+}
+.navbar-header.h1 {
+
+
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+span.dashboard_head
+{   font-size: 20px;
+	color: white;
+	text-align:center;
+	margin-left: 35px;
+}
+.forms button.btn.btn-default {
+    background-color: #F2B33F;
+    color: #fff;
+    padding: .5em 1.5em;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    border-radius: 5px;
+    width: 30%;
+}
+@media (min-width: 768px)
+{
+.col-sm-offset-2 {
+    margin-left: 25%;
+    margin-top: 5%;
+}
+}
+
+</style>
+<script>
+             $(function() { // this function is to minimum date that can be selected to create an event
+              $(document).ready(function () {
+                  var date = new Date().toISOString().slice(0,7); // extract date from date and time output
+                   $('#date').attr('max', date);
+
+              });
+           });
+</script>
+</head>
+<body class="cbp-spmenu-push">
+<!--{% with messages = get_flashed_messages() %}-->
+<!--         {% if messages %}-->
+<!--               {% for message in messages %}-->
+<!--                    <p style="color:red;">{{ message }}</p>-->
+<!--               {% endfor %}-->
+<!--         {% endif %}-->
+<!--      {% endwith %}-->
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <h1>  <img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;">
+            <span class="dashboard_head" >Punjab </span>  <span class="dashboard_text">Police dashboard</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div style="padding-top:30px;"></div>
+            <table class="table" style="border:1px solid black; height:100%; border-collapse: collapse;
+    border: solid black 1px;
+    border-radius: 6px;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: white;">
+        <tr>
+            <td colspan="3" style="background-color:#FFFFFF; color: #e89a09; font-size: 27px;"><b>RANKING TABLE</b></td>
+        </tr>
+        <tr>
+            <th>PS Name</th>
+            <th>Marks</th>
+            <th>Ranks</th>
+        </tr>
+        <tr>
+            {% for each in values %}
+            <tr>
+                {% for element in each %}
+                    <td bgcolor="white">{{ element }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    </aside>
+	</div>
+		<!--left-fixed -navigation-->
+
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+<div class="header-left"   style="float: left;
+    width: 30%;">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+
+                <a href="" class="logo">SSP<em> PORTAL</em></a>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="header-right" style="float: right;
+    width: 53%; height:100%; margin-top: 0.7%;">
+
+
+
+				<!--search-box-->
+				<!--//end-search-box-->
+
+				<div class="profile_details" style="width:100%; height:100%;">
+					<ul>
+
+
+<!--						<ul class="nav">-->
+<!--                            <li class="scroll-to-section"><a href="#" class="active">Home</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Challan</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Investigation</a></li>-->
+<!--                            <li class="scroll-to-section"><a href="#">Recovery</a></li>-->
+<!--                            &lt;!&ndash; <li class="scroll-to-section"><a href="">Logout</a></li>  &ndash;&gt;-->
+<!--                            <li class="main-button"><a href="#">Logout</a></li>-->
+<!--                        </ul>-->
+
+<!--						<li class="dropdown profile_details_drop">-->
+
+
+
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('marksform')}}" style="font-size: 1.7rem; font-weight: 500;">Fill Marks</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('mark')}}" style="font-size: 1.7rem; font-weight: 500;">Dashboard</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left:2.6%;">
+										<a href="{{url_for('tablesSSP')}}" style="font-size: 1.7rem; font-weight: 500;">Edit Data</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('ssportal')}}" style="font-size: 1.7rem; font-weight: 500;">Compare PS</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+						        <div class="user-name" style="margin-left: 2.6%;">
+										<a href="{{url_for('SSPuploading')}}" style="font-size: 1.7rem; font-weight: 500;">Upload Data</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+								</div>
+								<div class="profile_img" >
+									<!-- <span class="prfil-img"><img src="images/2.jpg" alt=""> </span>  -->
+									<div class="user-name" style="margin-right: 2%;float: right;">
+										<a href="{{url_for('logout')}}" style="font-size: 1.7rem; font-weight: 500;"><i class="fa fa-sign-out"></i> Logout</a>
+										<!-- <p>Admin Name</p>
+										<span>Administrator</span> -->
+									</div>
+									<!-- <i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i> -->
+									<div class="clearfix"></div>
+								</div>
+
+							<!-- <ul class="dropdown-menu drp-mnu">
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
+								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul> -->
+<!--						</li>-->
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<!-- //header-ends -->
+		<!-- main content start-->
+		<div id="page-wrapper">
+			<div class="main-page">
+
+<!--                    <div style="padding-top :100px;"></div>-->
+                        <div class="container">
+                             <form  method="post" action="{{ url_for('ssportal')}}">
+
+
+                    <div class="name">
+                        <div>
+                            <label class="label">Police Station 1</label>
+
+                                {{form.csrf_token}}
+                            <div style="padding-right:15px;">
+                                {{form.ps_name1( id = 'ps_name1' , class = "input")}}
+                                </div>
+                        </div>
+                        <div>
+
+                            <label class="label">Police Station 2</label>
+                             <div style="padding-right:15px;">
+                            {{form.ps_name2( id = 'ps_name2', class = "input")}}
+                             </div>
+                        </div>
+                        <div>
+                            <label class="label">Attribute</label>
+                            <div style="padding-right:30px;">
+                            {{form.attribute_field( id = 'attribute_field', class = "input")}}
+                            </div>
+                        </div>
+                        <div>
+                            <label class="label">Date</label>
+                        <div style="padding-right:30px;">
+                            {{form.date(placeholder = 'date', type = 'month' , id = 'date')}}
+                        </div>
+                        </div>
+
+
+<!--                               <ul class="nav">-->
+<!--                                <input class="main-button " id="butn" type="submit">-->
+<!--                            </ul>-->
+                        <div>
+                            <button type="submit" class="button" id="butn">Submit</button>
+                        </div>
+
+                    </div>
+
+                        <!-- <a href="">Police Station 2</a> -->
+                        <!-- <a href="">Graph Type</a> -->
+
+
+                    </form>
+                </div>
+                    <div id="output">
+                    </div>
+
+
+
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- side nav js -->
+	<script src="{{url_for('static' , filename='javascript/SidebarNav.min.js')}}" type='text/javascript'></script>
+	<script>
+      $('.sidebar-menu').SidebarNav()
+    </script>
+	<!-- //side nav js -->
+
+	<!-- Classie --><!-- for toggle left push menu script -->
+		<script src="{{url_for('static' , filename='javascript/classie.js')}}"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+		</script>
+	<!-- //Classie --><!-- //for toggle left push menu script -->
+
+	<!--scrolling js-->
+	<script src="{{url_for('static' , filename='javascript/jquery.nicescroll.js')}}"></script>
+	<script src="{{url_for('static' , filename='javascript/scripts.js')}}"></script>
+	<!--//scrolling js-->
+
+	<!-- Bootstrap Core JavaScript -->
+   <script src="{{url_for('static' , filename='javascript/bootstrap.js')}}"> </script>
+
+</body>
+</html>
