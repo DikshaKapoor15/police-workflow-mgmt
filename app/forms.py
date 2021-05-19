@@ -66,14 +66,14 @@ class investigationForm(FlaskForm):
 
 
 class adminForm(FlaskForm):
-    ps_name1 = SelectField(label = 'ps_name1',choices=[('Nangal','Nangal'),('Anandpur','Anandpur'),('Rupnagar','Rupnagar')])
-    ps_name2 = SelectField(label = 'ps_name2',choices=[('Nangal','Nangal'),('Anandpur','Anandpur'),('Rupnagar','Rupnagar')])
+    ps_name1 = SelectField(label = 'ps_name1',choices=[ ('ps1','ps1'),('ps2','ps2'),('ps3','ps3'),('ps4','ps4'),('ps5','ps5'),('ps6','ps6'),('ps7','ps7'),('ps8','ps8'),('ps9','ps9'),('ps10','ps10')])
+    ps_name2 = SelectField(label = 'ps_name2',choices=[ ('ps1','ps1'),('ps2','ps2'),('ps3','ps3'),('ps4','ps4'),('ps5','ps5'),('ps6','ps6'),('ps7','ps7'),('ps8','ps8'),('ps9','ps9'),('ps10','ps10')])
     attribute_field = SelectField(label='attribute_field',choices=[('Investigation under LOCAL & SPECIAL LAW','Investigation Under LOCAL & SPECIAL LAW'),('Investigation under IPC','Investigation Under IPC'),('Marks',"MARKS"),('Challan',"CHALLAN")])
     date = DateField(format = '%Y-%m')
 
 class marksForm(FlaskForm):
     date = DateField(format='%Y-%m')
-    ps_name = StringField()
+    ps_name = SelectField(validators=[DataRequired()],choices=[ ('ps1','ps1'),('ps2','ps2'),('ps3','ps3'),('ps4','ps4'),('ps5','ps5'),('ps6','ps6'),('ps7','ps7'),('ps8','ps8'),('ps9','ps9'),('ps10','ps10')])
     percent_of_cases_submitted_in_court = IntegerField(label='percent_of_cases_submitted_in_court',default=0)
     cases_of_henius_crime= IntegerField(label='cases_of_henius_crime',default=0)
     crime_against_property = IntegerField(label='crime_against_property' , default=0)
@@ -103,7 +103,7 @@ class ResetPasswordForm(FlaskForm):
 
 
 class table(FlaskForm):
-    ps_name =  StringField(label = 'Police Station',validators=[InputRequired()])
+    ps_name =  SelectField(label = 'Police Station',validators=[InputRequired()],choices=[ ('ps1','ps1'),('ps2','ps2'),('ps3','ps3'),('ps4','ps4'),('ps5','ps5'),('ps6','ps6'),('ps7','ps7'),('ps8','ps8'),('ps9','ps9'),('ps10','ps10')])
     attribute = SelectField(label='Attribute',choices=[('Marks','Marks'),('Challan','Challan'),
             ('Investigation under IPC','Investigation under IPC'),('Recovery','Recovery'),
                     ('Investigation under Local & Special Law','Investigation under Local & Special Law')])
