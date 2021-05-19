@@ -312,7 +312,6 @@ span.dashboard_head
                 var from_date = $("#from_date").val();
                  var to_date = $("#to_date").val();
 
-               alert("tttttt");
                console.log(ps_name);
                console.log(attribute);
                console.log(from_date);
@@ -327,7 +326,7 @@ span.dashboard_head
                          "to_date":to_date},
                 success : function(data)
                     {
-                        alert("success");
+ 
                         $("#output").html(data);
                          $("#output").append(data.htmlresponse);
 
