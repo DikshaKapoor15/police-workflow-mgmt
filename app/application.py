@@ -1464,7 +1464,7 @@ def mark():
     d = datetime.datetime.today()
    # d = d + relativedelta(months=-1)
     d=d.strftime('%Y-%m')
-    psLabels=['C. Morinda', 'Chamkaru', 'Rupnagar', 'Kiratpur', 'S. Rupnagar', 'S. Morindar', 'Nurpurbedi', 'Bhegwantpur', 'Nangal', 'Anandpur']
+    psLabels=['ps1','ps2','ps3','ps4','ps5','ps6','ps7','ps8','ps9','ps10']
     values_all=[]
     for x in psLabels:
         mycursor.execute("SELECT * from marks where ps_name='{0}' and to_char(date,'YYYY-MM')='{1}'".format(x,d))
@@ -1594,8 +1594,7 @@ def ssportal():
     d = datetime.datetime.today()
     # d = d + relativedelta(months=-1)
     d = d.strftime('%Y-%m')
-    psLabels = ['C. Morinda', 'Chamkaru', 'Rupnagar', 'Kiratpur', 'S. Rupnagar', 'S. Morindar', 'Nurpurbedi',
-                'Bhegwantpur', 'Nangal', 'Anandpur']
+    psLabels = ['ps1','ps2','ps3','ps4','ps5','ps6','ps7','ps8','ps9','ps10']
     values_all = []
     for x in psLabels:
         mycursor.execute("SELECT * from marks where ps_name='{0}' and to_char(date,'YYYY-MM')='{1}'".format(x, d))
