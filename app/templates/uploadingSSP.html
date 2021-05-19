@@ -195,37 +195,33 @@ span.dashboard_head
             <h1>  <img src = "https://upload.wikimedia.org/wikipedia/en/7/73/Punjab_Police_%28India%29_Logo.png" alt="PUNJAB POLICE" style="width:60px; height:70px; float :left; padding-top:2px;">
             <span class="dashboard_head" >Punjab </span>  <span class="dashboard_text">Police dashboard</span></a></h1>
           </div>
-<!--          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-<!--            <ul class="sidebar-menu">-->
-<!--              <li class="header">MAIN NAVIGATION</li>-->
-<!--              <li class="treeview">-->
-<!--                <a href="{{url_for('home')}}">-->
-<!--                <i class="fa fa-dashboard"></i> <span>Dashboard</span>-->
-<!--                </a>-->
-<!--              </li>-->
-<!--              <li class="treeview">-->
-<!--                <a href="#">-->
-<!--                <i class="fa fa-edit"></i> <span>Forms</span>-->
-<!--                <i class="fa fa-angle-left pull-right"></i>-->
-<!--                </a>-->
-<!--                <ul class="treeview-menu">-->
-<!--                  <li><a href="{{url_for('challan')}}"><i class="fa fa-angle-right"></i> Challan Form</a></li>-->
-<!--				  <li><a href="{{url_for('recovery')}}"><i class="fa fa-angle-right"></i> Recovery Form</a></li>-->
-<!--				  <li><a href="{{url_for('investigations')}}"><i class="fa fa-angle-right"></i> Investigation Form</a></li>-->
-
-<!--                </ul>-->
-<!--              </li>-->
-<!--              <li class="treeview">-->
-<!--                <a href="#">-->
-<!--                <i class="fa fa-table"></i> <span>Tables</span>-->
-<!--                <i class="fa fa-angle-left pull-right"></i>-->
-<!--                </a>-->
-<!--                <ul class="treeview-menu">-->
-<!--                  <li><a href="tables.html"><i class="fa fa-angle-right"></i> Simple tables</a></li>-->
-<!--                </ul>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </div>-->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div style="padding-top:30px;"></div>
+            <table class="table" style="border:1px solid black; height:100%; border-collapse: collapse;
+    border: solid black 1px;
+    border-radius: 6px;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    background-color: white;">
+        <tr>
+            <td colspan="3" style="background-color:#FFFFFF; color: #e89a09; font-size: 27px;"><b>TRACK</b></td>
+        </tr>
+        <tr>
+            <th>PS Name</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            {% for each in lst %}
+            <tr>
+                {% for element in each %}
+                    <td bgcolor="white">{{ element }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tr>
+    </table>
+          </div>
           <!-- /.navbar-collapse -->
       </nav>
     </aside>
