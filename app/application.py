@@ -266,7 +266,7 @@ def challan():
                     .format(id=id, oltt=oltt, os=os, dd=dd, wm=wm, whs=whs, oc=oc))
             connection.commit()
             mycursor.execute(
-                "UPDATE notification SET challan_date='{d}' where name_ps='{u}'; ".format(d=d,
+                "UPDATE credentials SET date_challan='{d}' where username='{u}'; ".format(d=d,
                                                                                           u=str(current_user.username)))
             connection.commit()
             newupdate = updation_track(nps=current_user.username, un=current_user.username, a=attribute, md=m1, yr=yr,
@@ -288,7 +288,7 @@ def challan():
             db.session.add(newchallan)
             db.session.commit()
 
-            mycursor.execute("UPDATE notification SET challan_date='{d}' where name_ps='{u}'; ".format(d=d, u=str(
+            mycursor.execute("UPDATE credentials SET date_challan='{d}' where username='{u}'; ".format(d=d, u=str(
                 current_user.username)))
             connection.commit()
 
@@ -339,7 +339,7 @@ def recovery():
                 .format(id=id, il = il, li = li, la = la, op = op, po = po, he = he, ch = ch, ga = ga, inj = inj, ta = ta , ot = ot))
             connection.commit()
             mycursor.execute(
-                "UPDATE notification SET recovery_date='{d}' where name_ps='{u}'; ".format(d=recovery_form.date.data,
+                "UPDATE credentials SET date_recovery='{d}' where username='{u}'; ".format(d=recovery_form.date.data,
                                                                                           u=str(current_user.username)))
             connection.commit()
             newupdate = updation_track(nps=current_user.username, un=current_user.username, a=attribute, md=m1, yr=yr,
@@ -356,7 +356,7 @@ def recovery():
             db.session.add(new_recovery)
             db.session.commit()
             mycursor.execute(
-                "UPDATE notification SET recovery_date='{d}' where name_ps='{u}'; ".format(d=recovery_form.date.data,
+                "UPDATE credentials SET date_recovery='{d}' where username='{u}'; ".format(d=recovery_form.date.data,
                                                                                            u=str(current_user.username)))
             connection.commit()
             newupdate = updation_track(nps=current_user.username, un=current_user.username, a='Recovery', md=m1, yr=yr,
@@ -413,7 +413,7 @@ def investigations():
                         p12=p12, d12=d12))
             connection.commit()
             mycursor.execute(
-                "UPDATE notification SET recovery_date='{d}' where name_ps='{u}'; ".format(d=iform.date.data,
+                "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=iform.date.data,
                                                                                           u=str(current_user.username)))
             connection.commit()
             newupdate = updation_track(nps=current_user.username, un=current_user.username, a=attribute, md=m1, yr=yr,
@@ -437,7 +437,7 @@ def investigations():
             db.session.add(newinvestigation)
             db.session.commit()
             mycursor.execute(
-            "UPDATE notification SET investigation_date='{d}' where name_ps='{u}'; ".format(d=iform.date.data, u=str(
+            "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=iform.date.data, u=str(
                current_user.username)))
             connection.commit()
             newupdate = updation_track(nps=current_user.username, un=current_user.username, a='Investigation', md=m1, yr=yr,
@@ -482,7 +482,7 @@ def uploading():
                         "update challans set  overload_tripper_and_truck='{oltt}',over_speed='{os}', drunken_driving='{dd}',without_mask='{wm}',without_helmet_seatbelt='{whs}',other='{oc}' where id={id}".format(
                             id=id, oltt=oltt, os=os, dd=dd, wm=wm, whs=whs, oc=oc))
                     connection.commit()
-                    mycursor.execute("UPDATE notification SET challan_date='{d}' where name_ps='{u}'; ".format(d=d,
+                    mycursor.execute("UPDATE credentials SET date_challan='{d}' where username='{u}'; ".format(d=d,
                                                                                                                u=str(
                                                                                                                    current_user.username)))
                     connection.commit()
@@ -505,7 +505,7 @@ def uploading():
                     db.session.commit()
 
                     mycursor.execute(
-                        "UPDATE notification SET challan_date='{d}' where name_ps='{u}'; ".format(d=d, u=str(
+                        "UPDATE credentials SET date_challan='{d}' where username='{u}'; ".format(d=d, u=str(
                             current_user.username)))
                     connection.commit()
 
@@ -575,7 +575,7 @@ def uploading():
                     db.session.add(newupdate)
                     db.session.commit()
                     mycursor.execute(
-                        "UPDATE notification SET investigation_date='{d}' where name_ps='{u}'; ".format(d=dtoday, u=str(
+                       "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=dtoday, u=str(
                             current_user.username)))
                     connection.commit()
                     print("under ipc 1")
@@ -593,7 +593,7 @@ def uploading():
                     db.session.add(newinvestigation)
                     db.session.commit()
                     mycursor.execute(
-                        "UPDATE notification SET investigation_date='{d}' where name_ps='{u}'; ".format(d=dtoday, u=str(
+                        "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=dtoday, u=str(
                             current_user.username)))
                     connection.commit()
                     newupdate = updation_track(nps=current_user.username, un=current_user.username, a=attribute, md=m1,
@@ -663,7 +663,7 @@ def uploading():
                     db.session.add(newupdate)
                     db.session.commit()
                     mycursor.execute(
-                        "UPDATE notification SET investigation_date='{d}' where name_ps='{u}'; ".format(d=dtoday, u=str(
+                       "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=dtoday, u=str(
                             current_user.username)))
                     connection.commit()
 
@@ -682,7 +682,7 @@ def uploading():
                     db.session.add(newinvestigation)
                     db.session.commit()
                     mycursor.execute(
-                        "UPDATE notification SET investigation_date='{d}' where name_ps='{u}'; ".format(d=dtoday, u=str(
+                        "UPDATE credentials SET date_investigation='{d}' where username='{u}'; ".format(d=dtoday, u=str(
                             current_user.username)))
                     connection.commit()
                     newupdate = updation_track(nps=current_user.username, un=current_user.username, a=attribute, md=m1,
@@ -727,7 +727,7 @@ def uploading():
 
                     connection.commit()
                     mycursor.execute(
-                        "UPDATE notification SET recovery_date='{d}' where name_ps='{u}'; ".format(
+                        "UPDATE credentials SET date_recovery='{d}' where username='{u}'; ".format(
                             d=dtoday,
                             u=str(current_user.username)))
                     connection.commit()
@@ -756,7 +756,7 @@ def uploading():
                     db.session.add(newupdate)
                     db.session.commit()
                     mycursor.execute(
-                        "UPDATE notification SET recovery_date='{d}' where name_ps='{u}'; ".format(
+                        "UPDATE credentials SET date_recovery='{d}' where username='{u}'; ".format(
                             d=dtoday,
                             u=str(current_user.username)))
                     connection.commit()
