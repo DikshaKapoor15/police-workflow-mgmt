@@ -1202,7 +1202,7 @@ def SSPuploading():
         data = mycursor.fetchall()
         maximum = max(data[0][4], data[0][5], data[0][6])
 
-        lst = [x, maximum.strftime('%d-%m-%y')]
+        lst = [x, maximum.strftime('%d-%b-%Y')]
         recent_update.append(lst)
     return render_template("uploadingSSP.html", form=eform,lst = recent_update)
 
