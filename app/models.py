@@ -14,7 +14,7 @@ class Credentials(UserMixin, db.Model):
     urole = db.Column(db.String(80))
     def get_reset_password_token(self, expires_in=6000):
         return jwt.encode(
-            {'reset_password': self.mail_id, 'exp': time() + expires_in},
+            {'reset_password': self.email, 'exp': time() + expires_in},
             app.config['SECRET_KEY'], algorithm='HS256')
 
     @staticmethod
