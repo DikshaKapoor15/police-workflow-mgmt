@@ -782,6 +782,9 @@ def SSPuploading():
                 date = datetime.datetime.strptime(r['DATE'], '%Y-%m')
                 dtoday = datetime.date.today()
                 ps = r['ps_name']
+                if ps not in ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']:
+                    flash("Please Enter only valid Police Station Names in recovery data", category='danger')
+                    return redirect(url_for('SSPuploading'))
                 m1 = date.strftime('%b')
                 mnth = date.strftime("%m")
                 yr = date.strftime("%Y")
@@ -847,6 +850,9 @@ def SSPuploading():
                 yr = date.strftime("%Y")
                 attribute = 'Challan'
                 ps = r['ps_name']
+                if ps not in ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']:
+                    flash("Please Enter only valid Police Station Names in challan data", category='danger')
+                    return redirect(url_for('SSPuploading'))
                 mycursor.execute("select * from challans where extract(year from date)='{yr}' and extract(month from date)='{mnth}' and ps_name='{ps}' ".format( yr=yr, mnth=mnth, ps=ps))
                 data = mycursor.fetchall()
                 oltt = r['overloaded truck']
@@ -926,7 +932,9 @@ def SSPuploading():
                 date2 = date.strftime('%Y-%m-%d')
                 print(date1)
                 ps = mdata.loc[i, ('Name of PS', 'Unnamed: 0_level_1')]
-
+                if ps not in ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']:
+                    flash("Please Enter only valid Police Station Names in marks data", category='danger')
+                    return redirect(url_for('SSPuploading'))
                 attribute = 'Marks'
                 m1 = date.strftime('%b')
                 yr = date.strftime('%Y')
@@ -1028,6 +1036,9 @@ def SSPuploading():
                                                     ('DATE', 'DATE')}:
                     # print(ipcdata.loc[i,('DATE','DATE')])
                     ps=ipcdata.loc[i,('PS_NAME','PS_NAME')]
+                    if ps not in ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']:
+                        flash("Please Enter only valid Police Station Names in investigation under IPC data", category='danger')
+                        return redirect(url_for('SSPuploading'))                    
                     date = datetime.datetime.strptime(ipcdata.loc[i, ('DATE', 'DATE')], '%Y-%m')
                     dtoday = datetime.date.today()
                     mtoday = dtoday.strftime("%m")
@@ -1119,6 +1130,9 @@ def SSPuploading():
                                                       ('DATE', 'DATE')}:
                     # print(localdata.loc[i,('DATE','DATE')])
                     ps=localdata.loc[i,('PS_NAME','PS_NAME')]
+                    if ps not in ['ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7', 'ps8', 'ps9', 'ps10']:
+                        flash("Please Enter only valid Police Station Names in investigation under local data", category='danger')
+                        return redirect(url_for('SSPuploading'))                    
                     date = datetime.datetime.strptime(localdata.loc[i, ('DATE', 'DATE')], '%Y-%m')
                     dtoday = datetime.date.today()
                     mtoday = dtoday.strftime("%m")
