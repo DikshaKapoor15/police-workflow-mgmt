@@ -114,7 +114,7 @@ def reset_password(token):
         print("heyy before reset password", user.password)
         user.password=generate_password_hash(form.password.data)
 
-        mycursor.execute("UPDATE credentials SET password = '{password}' WHERE mail_id = '{mail}' ".format(password = str(user.password), mail =  str(idRec)))
+        mycursor.execute("UPDATE credentials SET password = '{password}' WHERE email = '{mail}' ".format(password = str(user.password), mail =  str(idRec)))
         connection.commit()
         # user1 = Credentials.query.filter_by(mail_id=idRec).first()
         print("heyy after reset password in database", user.password)
