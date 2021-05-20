@@ -1194,7 +1194,8 @@ def SSPuploading():
 
 
 
-            return "uploaded"
+            flash("Data uploaded Successfully", category='success')
+            return redirect(url_for('SSPuploading'))
     psLabels = ["ps1",'ps2','ps3','ps4','ps5','ps6','ps7','ps8','ps9','ps10']
     recent_update = []
     for x in psLabels:
